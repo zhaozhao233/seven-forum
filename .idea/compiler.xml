@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="seven-forum-dao" />
-        <module name="seven-forum-service" />
         <module name="seven-forum-web" />
         <module name="seven-forum-entity" />
+        <module name="seven-forum-dao" />
+        <module name="seven-forum-service" />
       </profile>
     </annotationProcessing>
   </component>
