@@ -11,5 +11,13 @@
 
     <artifactId>seven-forum-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.nf</groupId>
+            <artifactId>seven-forum-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
 </project>

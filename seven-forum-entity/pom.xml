@@ -11,5 +11,24 @@
 
     <artifactId>seven-forum-entity</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.nf</groupId>
+            <artifactId>seven-forum-util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+<!--少些实体类代码的jar包-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+
+    </dependencies>
 
 </project>
