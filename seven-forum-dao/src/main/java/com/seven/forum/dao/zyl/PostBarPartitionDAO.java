@@ -4,7 +4,7 @@ import com.seven.forum.entity.zyl.PostBarPartitionEntity;
 
 import java.util.List;
 
-public interface PostBarPartitionDao {
+public interface PostBarPartitionDAO {
 
     List<PostBarPartitionEntity> listAllPartitionsAndCatalogues();
 }

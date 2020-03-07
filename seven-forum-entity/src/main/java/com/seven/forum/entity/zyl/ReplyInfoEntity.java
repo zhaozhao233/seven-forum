@@ -11,6 +11,7 @@ public class ReplyInfoEntity {
     private Long replyId;
     private Long userId;
     private Long replyUserId;
+    private Long replyPostId;
     private String replyContent;
     private Date replyTime;
     private Integer replyStatus;
@@ -21,6 +22,7 @@ public class ReplyInfoEntity {
                 "replyId=" + replyId +
                 ", userId=" + userId +
                 ", replyUserId=" + replyUserId +
+                ", replyPostId=" + replyPostId +
                 ", replyContent='" + replyContent + '\'' +
                 ", replyTime=" + replyTime +
                 ", replyStatus=" + replyStatus +
