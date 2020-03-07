@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.zyl.PostBarInfoDAO">
+
+    <!--热门贴吧（前100中的8个）-->
+    <select id="listPopularPostBarId" resultType="int">
+        SELECT post_bar_id FROM post_bar_info ORDER BY user_count DESC LIMIT 100
+    </select>
+
+    <select id="listPopularPostBar" resultType="postBarInfoEntity">
+        SELECT post_bar_id, catalogue_id, post_bar_name, post_bar_explain,
+        post_bar_logo_url, user_id, post_count, user_count, create_time,
+        post_bar_status
+        FROM post_bar_info
+        WHERE post_bar_id in
+        <foreach collection="collection" open="(" close=")" index="index" item="id" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <!--根据关键字模糊搜索贴吧-->
+    <select id="listPostBarByName" resultType="string">
+        SELECT * FROM post_bar_info
+        WHERE post_bar_name LIKE CONCAT(CONCAT('%', #{arg0}), '%')
+    </select>
+
+    <!--某个目录下的贴吧信息-->
+    <select id="listPostBarByCatalogueId" resultType="postBarInfoEntity">
+        SELECT post_bar_id,catalogue_id,post_bar_name,
+          post_bar_explain, post_bar_logo_url, user_id,
+          post_count, user_count, create_time, post_bar_status
+        FROM post_bar_info
+        WHERE post_bar_status = 1
+        AND catalogue_id = #{arg0}
+        ORDER BY post_bar_id
+    </select>
+
+    <!--分区下的贴吧信息-->
+    <select id="listPostBarByPartitionId" resultType="postBarInfoEntity">
+        SELECT post_bar_id,catalogue_id,post_bar_name,
+          post_bar_explain, post_bar_logo_url, user_id,
+          post_count, user_count, create_time
+        FROM post_bar_info
+        WHERE post_bar_status = 1
+        AND catalogue_id IN
+        (SELECT catalogue_id FROM partition_catalogue WHERE partition_id=#{arg0})
+        ORDER BY post_bar_id
+    </select>
+
+    <!--指定id的贴吧信息,既然能指定id那状态就无所谓了，能指定id说明贴吧能被选择/看到-->
+    <select id="listPostBarById" resultType="postBarInfoEntity">
+        SELECT post_bar_id,catalogue_id,post_bar_name,
+          post_bar_explain, post_bar_logo_url, user_id,
+          post_count, user_count, create_time
+        FROM post_bar_info
+        WHERE post_bar_id = #{arg0}
+    </select>
+
+    <!--判断吧名是否存在-->
+    <select id="ifExist" resultType="int">
+      SELECT COUNT(*) FROM post_bar_info WHERE post_bar_name = #{arg0}
+    </select>
+
+
+    <!--修改贴吧说明-->
+    <update id="updateExplainById">
+        UPDATE post_bar_info
+        SET post_bar_explain = #{arg0}
+        WHERE post_bar_id = #{arg1}
+    </update>
+
+    <!--修改logo-->
+    <update id="updateLogo">
+        UPDATE post_bar_info
+        SET post_bar_logo_url = #{arg0}
+        WHERE post_bar_id = #{arg1}
+    </update>
+
+    <!--修改贴吧所属目录分类id-->
+    <update id="updateCatalogue">
+        UPDATE post_bar_info
+        SET catalogue_id = #{arg0}
+        WHERE post_bar_id = #{arg1}
+    </update>
+
+    <!--替换吧主-->
+    <update id="updateUserId">
+        UPDATE post_bar_info
+        SET user_id = #{arg0}
+        WHERE post_bar_id = #{arg1}
+    </update>
+
+    <!--帖子数+1-->
+    <update id="addPostCount">
+        UPDATE post_bar_info
+        SET post_count += 1
+        WHERE post_bar_id = #{arg0}
+    </update>
+
+    <!--关注人数+1-->
+    <update id="addUserCount">
+        UPDATE post_bar_info
+        SET user_count += 1
+        WHERE post_bar_id = #{arg0}
+    </update>
+
+    <!--贴子数-1-->
+    <update id="reducePostCount">
+        UPDATE post_bar_info
+        SET post_count -= 1
+        WHERE post_bar_id = #{arg0}
+    </update>
+
+    <!--关注人数-1-->
+    <update id="reduceUserCount">
+        UPDATE post_bar_info
+        SET post_count -= 1
+        WHERE post_bar_id = #{arg0}
+    </update>
+
+    <!--删除/屏蔽本吧-->
+    <update id="reducePostBar">
+        UPDATE post_bar_info
+        SET post_bar_status = 0
+        WHERE post_bar_id = #{arg1}
+    </update>
+
+    <!--新创建一个吧-->
+    <insert id="insertPostBarInfo">
+        INSERT INT0 post_bar_info(catalogue_id,post_bar_name,post_bar_explain,post_bar_logo_url,user_id)
+        VALUES (#{catalogueId},#{postBarName},#{postBarExplain},#{postBarLogoUrl},#{userId})
+    </insert>
+</mapper>

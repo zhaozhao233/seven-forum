@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.zyl.PostBarInfoDAO">
+
+    <insert id="insertPostInfo">
+        INSERT INTO post_info(post_bar_id, post_title, post_content, user_id)
+        VALUES (#{arg0}, #{arg1}, #{arg2}, #{arg3})
+    </insert>
+
+    <!--所有界面的帖子，通过置顶降序排序-->
+    <select id="listAllPostInfo" resultType="postInfoEntity">
+        SELECT post_id, post_bar_id, post_title, post_content, user_id, user_name,wonderful_post,visit_count
+        FROM post_info, nf_user
+        WHERE post_status = 1
+        ORDER BY top_post DESC, create_time
+    </select>
+
+    <!--精品贴块的帖子-->
+    <select id="listAllWonderfulPost" resultType="postInfoEntity">
+        SELECT post_id, post_bar_id, post_title, post_content, user_id, user_name
+        FROM post_info, nf_user
+        WHERE post_status = 1 AND wonderful_post = 1
+    </select>
+</mapper>

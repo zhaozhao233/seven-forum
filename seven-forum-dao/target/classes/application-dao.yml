@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    #   我加了?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC 是因为报了一个时区的错误
+    #   加了?useSSL=false 出了一个不断循环的错误
+    url: jdbc:mysql://localhost:3306/seven_forum?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+mybatis:
+  # mybatis要扫描到的文件
+  mapper-locations: classpath*:mappers/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #   下划线转换为大写
+    map-underscore-to-camel-case: true
+  # 辅助功能，mapper文件里找文件时，不用写全部路径
+  type-aliases-package: com.seven.forum.entity.zyl
+pagehelper:
+  support-methods-arguments: true
+  reasonable: true
+  # 说明用的是什么数据库
+  helper-dialect: mysql
+
