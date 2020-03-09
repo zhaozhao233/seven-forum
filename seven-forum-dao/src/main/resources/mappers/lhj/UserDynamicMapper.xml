@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.lhj.UserDynamicDao">
+    <select id="listFollowUserDynamic" resultType="com.seven.forum.entity.lhj.UserDynamicEntity">
+        select dynamic_id, user_id, dynamic_content, dynamic_status, dynamic_time, like_count, comment_count from user_dynamic
+        where user_id  in (select attention_user_id  from user_attention_user where user_id=#{userId})
+    </select>
+
+    <select id="listCommentByDynamicId" resultType="com.seven.forum.entity.lhj.UserCommentEntity">
+       select comment_id, user_id, dynamic_id, dynamic_status, reply_user_id, comment_time, like_count, comment_content, comment_status
+        from user_comment where dynamic_id = #{dynamicId}
+    </select>
+</mapper>

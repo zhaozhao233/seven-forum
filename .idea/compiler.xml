@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="seven-forum-service" />
         <module name="seven-forum-controller" />
+        <module name="seven-forum-service" />
         <module name="seven-forum-util" />
         <module name="seven-forum-dao" />
         <module name="seven-forum-entity" />
