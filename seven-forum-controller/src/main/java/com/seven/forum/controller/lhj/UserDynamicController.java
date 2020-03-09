@@ -26,7 +26,7 @@ public class UserDynamicController {
     }
 
     @RequestMapping("/commentByDynamicId")
-    public ResponseVO listComment(Integer dynamicId){
+    public ResponseVO listComment(Integer dynamicId){//该动态下的所有评论
         List<UserCommentEntity> userCommentEntities = dynamicService.listCommentByDynamicId(dynamicId);
         ResponseVO responseVO = new ResponseVO();
         responseVO.setData(userCommentEntities);
