@@ -13,4 +13,6 @@ public class UserDynamicEntity {//用户动态
     private Timestamp dynamicTime;
     private Integer likeCount;
     private Integer commentCount;
+    private String userImgUrl;//用户头像url
+    private String userName;
 }

@@ -12,5 +12,11 @@ public interface UserDynamicDao {
                                                   Integer pageSize, Integer userId);
 
     //显示该动态的所有评论
-    List<UserCommentEntity> listCommentByDynamicId(Integer dynamicId);
+    List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,Integer dynamicId);
+
+    //评论该动态
+    void commentDynamic(Integer userId,Integer dynamicId,String commentContent);
+
+    //回复
+    void replyUser(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
 }

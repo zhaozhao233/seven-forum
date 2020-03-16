@@ -4,12 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seven.forum.dao.lhj.UserDynamicDao">
     <select id="listFollowUserDynamic" resultType="com.seven.forum.entity.lhj.UserDynamicEntity">
-        select dynamic_id, user_id, dynamic_content, dynamic_status, dynamic_time, like_count, comment_count from user_dynamic
-        where user_id  in (select attention_user_id  from user_attention_user where user_id=#{userId}) order by dynamic_time desc
+        /*显示关注人的动态*/
+       select dynamic_id, u.user_id, dynamic_content, dynamic_status,
+       dynamic_time, like_count, comment_count,
+       a.user_img_url,a.user_name from user_dynamic u inner join
+       nf_user a
+       where u.user_id  in (select attention_user_id  from user_attention_user where user_id=#{userId})
+       order by dynamic_time desc
     </select>
 
     <select id="listCommentByDynamicId" resultType="com.seven.forum.entity.lhj.UserCommentEntity">
-       select comment_id, user_id, dynamic_id, dynamic_status, reply_user_id, comment_time, like_count, comment_content, comment_status
-        from user_comment where dynamic_id = #{dynamicId} order by comment_time desc
+        /*显示评论*/
+       select comment_id, a.user_id, dynamic_id, dynamic_status, reply_user_id, comment_time,
+       like_count, comment_content, comment_status,b.user_img_url,b.user_name
+       from user_comment a inner join nf_user b where dynamic_id = #{dynamicId} order by comment_time desc
     </select>
+
+    <insert id="commentDynamic">
+        /*评论*/
+        insert into user_comment(user_id, dynamic_id, comment_content)
+            values (#{userId},#{dynamicId},#{commentContent})
+    </insert>
+
+    <insert id="replyUser">
+        /*回复*/
+        insert into user_comment(user_id,dynamic_id,comment_content,reply_user_id)
+        value (#{userId},#{dynamicId},#{commentContent},#{replyUserId})
+    </insert>
+
+
 </mapper>

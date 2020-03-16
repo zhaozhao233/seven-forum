@@ -15,4 +15,6 @@ public class UserCommentEntity {//用户评论
     private Integer likeCount;
     private String commentContent;
     private Integer commentStatus;
+    private String userImgUrl; //用户头像url
+    private String userName;
 }

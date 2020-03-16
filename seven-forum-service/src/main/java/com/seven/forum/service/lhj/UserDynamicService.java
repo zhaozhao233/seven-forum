@@ -10,5 +10,9 @@ public interface UserDynamicService {
     List<UserDynamicEntity> listFollowUserDynamic(Integer pageNum,
                                                   Integer pageSize, Integer userId);
 
-    List<UserCommentEntity> listCommentByDynamicId(Integer dynamicId);
+    List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,Integer dynamicId);
+
+    void commentDynamic(Integer userId,Integer dynamicId,String commentContent);
+
+    void replyUser(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
 }

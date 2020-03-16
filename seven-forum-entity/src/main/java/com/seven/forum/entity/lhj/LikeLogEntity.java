@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
+
 @Data
 public class LikeLogEntity {//点赞记录
 
@@ -13,4 +14,6 @@ public class LikeLogEntity {//点赞记录
     private Integer userId;
     private Integer likeStatus;
     private Timestamp likeTime;
+
+
 }
