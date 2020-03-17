@@ -19,4 +19,10 @@ public interface UserDynamicDao {
 
     //回复
     void replyUser(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
+
+    //发布动态
+    void releaseDynamic(Integer userId,String dynamicContent);
+
+    //添加评论数
+    void addCommentCount(Integer dynamicId);
 }

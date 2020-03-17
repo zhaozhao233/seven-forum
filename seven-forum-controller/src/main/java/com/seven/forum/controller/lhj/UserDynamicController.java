@@ -41,16 +41,27 @@ public class UserDynamicController {
     @ResponseBody
     //评论动态
     public String commentDynamic(Integer userId,Integer dynamicId,String commentContent){
-        dynamicService.commentDynamic(userId,dynamicId,commentContent);
+        dynamicService.commentDynamicWithAddCommentCount(userId,dynamicId,commentContent);
         return "comment done";
     }
 
     @RequestMapping("/replyComment")
     @ResponseBody
+    //回复评论
     public String replyComment(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId){
-        dynamicService.replyUser(userId,dynamicId,commentContent,replyUserId);
+       dynamicService.replyUserWithAddCommentCount(userId,dynamicId,commentContent,replyUserId);
         return "reply done";
     }
+
+    @RequestMapping("/releaseDynamic")
+    @ResponseBody
+    //发布动态
+    public String releaseDynamic(Integer userId,String dynamicContent){
+        dynamicService.releaseDynamic(userId,dynamicContent);
+        return "release done";
+    }
+
+
 
 
 

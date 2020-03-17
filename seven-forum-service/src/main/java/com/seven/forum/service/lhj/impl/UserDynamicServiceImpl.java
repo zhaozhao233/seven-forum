@@ -6,6 +6,7 @@ import com.seven.forum.entity.lhj.UserDynamicEntity;
 import com.seven.forum.service.lhj.UserDynamicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -24,13 +25,33 @@ public class UserDynamicServiceImpl implements UserDynamicService {
         return dynamicDao.listCommentByDynamicId(pageNum,pageSize,dynamicId);
     }
 
-    @Override
-    public void commentDynamic(Integer userId, Integer dynamicId, String commentContent) {
-         dynamicDao.commentDynamic(userId,dynamicId,commentContent);
-    }
+
+
 
     @Override
-    public void replyUser(Integer userId, Integer dynamicId, String commentContent, Integer replyUserId) {
-        dynamicDao.replyUser(userId,dynamicId,commentContent,replyUserId);
+    public void releaseDynamic(Integer userId, String dynamicContent) {
+        dynamicDao.releaseDynamic(userId,dynamicContent);
     }
+
+
+
+
+    @Transactional
+    @Override
+    //评论~and~动态评论数+1
+    public void commentDynamicWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent) {
+        dynamicDao.commentDynamic(userId,dynamicId,commentContent);
+        dynamicDao.addCommentCount(dynamicId);
+    }
+
+    @Transactional
+    @Override
+    //回复~and~动态评论数+1
+    public void replyUserWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent, Integer replyUserId) {
+        dynamicDao.replyUser(userId,dynamicId,commentContent,replyUserId);
+        dynamicDao.addCommentCount(dynamicId);
+
+    }
+
+
 }

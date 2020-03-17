@@ -12,7 +12,11 @@ public interface UserDynamicService {
 
     List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,Integer dynamicId);
 
-    void commentDynamic(Integer userId,Integer dynamicId,String commentContent);
 
-    void replyUser(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
+    void releaseDynamic(Integer userId,String dynamicContent);
+
+
+    void commentDynamicWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent);
+
+    void replyUserWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
 }

@@ -32,5 +32,16 @@
         value (#{userId},#{dynamicId},#{commentContent},#{replyUserId})
     </insert>
 
+    <insert id="releaseDynamic">
+        /*发布动态*/
+        insert into user_dynamic(user_id, dynamic_content)
+        value (#{userId},#{dynamicContent})
+    </insert>
+
+    <update id="addCommentCount">
+        update user_dynamic
+        set comment_count = comment_count+1 where dynamic_id = #{dynamicId}
+    </update>
+
 
 </mapper>
