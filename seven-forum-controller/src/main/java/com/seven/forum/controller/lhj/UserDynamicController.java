@@ -6,8 +6,8 @@ import com.seven.forum.service.lhj.UserDynamicService;
 import com.seven.forum.vo.ResponseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -40,16 +40,16 @@ public class UserDynamicController {
     @RequestMapping("/commentDynamic")
     @ResponseBody
     //评论动态
-    public String commentDynamic(Integer userId,Integer dynamicId,String commentContent){
-        dynamicService.commentDynamicWithAddCommentCount(userId,dynamicId,commentContent);
+    public String commentDynamic(Integer userId, Integer dynamicId, String commentContent,@RequestParam(defaultValue = "1") Integer commentStatus){
+        dynamicService.commentDynamicWithAddCommentCount(userId,dynamicId,commentContent,commentStatus);
         return "comment done";
     }
 
     @RequestMapping("/replyComment")
     @ResponseBody
     //回复评论
-    public String replyComment(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId){
-       dynamicService.replyUserWithAddCommentCount(userId,dynamicId,commentContent,replyUserId);
+    public String replyComment(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId,@RequestParam(defaultValue = "1")Integer commentStatus){
+       dynamicService.replyUserWithAddCommentCount(userId,dynamicId,commentContent,replyUserId,commentStatus);
         return "reply done";
     }
 
@@ -59,6 +59,21 @@ public class UserDynamicController {
     public String releaseDynamic(Integer userId,String dynamicContent){
         dynamicService.releaseDynamic(userId,dynamicContent);
         return "release done";
+    }
+
+    @RequestMapping("/likeDynamic")
+    @ResponseBody
+    public String likeDynamic(Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer dynamicId){
+        dynamicService.likeDynamicAndAddLikeCount(likeObjId,userId,likeStatus,dynamicId);
+        return "like dynamic done";
+    }
+
+
+    @RequestMapping("/likeComment")
+    @ResponseBody
+    public String likeComment(@RequestParam(defaultValue = "1") Integer likeType, Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer commentId){
+        dynamicService.likeCommentAndAddLikeCount(likeType,likeObjId,userId,likeStatus,commentId);
+        return "like comment done";
     }
 
 

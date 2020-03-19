@@ -16,7 +16,12 @@ public interface UserDynamicService {
     void releaseDynamic(Integer userId,String dynamicContent);
 
 
-    void commentDynamicWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent);
+    void commentDynamicWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent,Integer commentStatus);
 
-    void replyUserWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId);
+    void replyUserWithAddCommentCount(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId,Integer commentStatus);
+
+    void likeDynamicAndAddLikeCount(Integer likeObjId,Integer userId,Integer likeStatus,Integer dynamicId);
+
+    void likeCommentAndAddLikeCount(Integer likeType, Integer likeObjId,Integer userId,Integer likeStatus,Integer commentId);
+
 }

@@ -33,24 +33,34 @@ public class UserDynamicServiceImpl implements UserDynamicService {
         dynamicDao.releaseDynamic(userId,dynamicContent);
     }
 
-
-
-
     @Transactional
     @Override
     //评论~and~动态评论数+1
-    public void commentDynamicWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent) {
-        dynamicDao.commentDynamic(userId,dynamicId,commentContent);
+    public void commentDynamicWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent,Integer commentStatus) {
+        dynamicDao.commentDynamic(userId,dynamicId,commentContent,commentStatus);
         dynamicDao.addCommentCount(dynamicId);
     }
 
     @Transactional
     @Override
     //回复~and~动态评论数+1
-    public void replyUserWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent, Integer replyUserId) {
-        dynamicDao.replyUser(userId,dynamicId,commentContent,replyUserId);
+    public void replyUserWithAddCommentCount(Integer userId, Integer dynamicId, String commentContent, Integer replyUserId,Integer replyStatus) {
+        dynamicDao.replyUser(userId,dynamicId,commentContent,replyUserId,replyStatus);
         dynamicDao.addCommentCount(dynamicId);
 
+    }
+
+    @Transactional
+    @Override
+    public void likeDynamicAndAddLikeCount(Integer likeObjId, Integer userId, Integer likeStatus, Integer dynamicId) {
+        dynamicDao.likeDynamic(likeObjId,userId,likeStatus);
+        dynamicDao.addLikeDynamicCount(dynamicId);
+    }
+    @Transactional
+    @Override
+    public void likeCommentAndAddLikeCount(Integer likeType, Integer likeObjId, Integer userId, Integer likeStatus, Integer commentId) {
+        dynamicDao.likeComment(likeType,likeObjId,userId,likeStatus);
+        dynamicDao.addLikeCommentCount(commentId);
     }
 
 

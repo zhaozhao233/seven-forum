@@ -22,14 +22,14 @@
 
     <insert id="commentDynamic">
         /*评论*/
-        insert into user_comment(user_id, dynamic_id, comment_content)
-            values (#{userId},#{dynamicId},#{commentContent})
+        insert into user_comment(user_id, dynamic_id, comment_content, comment_status)
+            values (#{userId},#{dynamicId},#{commentContent},#{commentStatus})
     </insert>
 
     <insert id="replyUser">
         /*回复*/
-        insert into user_comment(user_id,dynamic_id,comment_content,reply_user_id)
-        value (#{userId},#{dynamicId},#{commentContent},#{replyUserId})
+        insert into user_comment(user_id,dynamic_id,comment_content,reply_user_id,comment_status)
+        value (#{userId},#{dynamicId},#{commentContent},#{replyUserId},#{commentStatus})
     </insert>
 
     <insert id="releaseDynamic">
@@ -39,9 +39,34 @@
     </insert>
 
     <update id="addCommentCount">
+        /*评论数+1*/
         update user_dynamic
         set comment_count = comment_count+1 where dynamic_id = #{dynamicId}
     </update>
+
+    <insert id="likeDynamic">
+        /*点赞动态*/
+        insert into like_log (like_obj_id, user_id, like_status)
+        values (#{likeObjId},#{userId},#{likeStatus})
+    </insert>
+
+    <insert id="likeComment">
+        /*点赞评论*/
+        insert into like_log(like_type,like_obj_id,user_id,like_status)
+        values(#{likeType},#{likeObjId},#{userId},#{likeStatus})
+    </insert>
+
+    <update id="addLikeDynamicCount">
+        /*动态点赞数+1*/
+        update user_dynamic set like_count = like_count+1 where dynamic_id = #{dynamicId};
+    </update>
+
+    <update id="addLikeCommentCount">
+        /*评论点赞数+1*/
+        update user_comment set like_count = like_count+1 where comment_id = #{commentId};
+    </update>
+
+
 
 
 </mapper>
