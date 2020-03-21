@@ -63,16 +63,54 @@ public class UserDynamicController {
 
     @RequestMapping("/likeDynamic")
     @ResponseBody
+    //动态点赞
     public String likeDynamic(Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer dynamicId){
-        dynamicService.likeDynamicAndAddLikeCount(likeObjId,userId,likeStatus,dynamicId);
+        Integer status = dynamicService.checkDynamicLike(likeObjId, userId);
+        if (status==null){
+            System.out.println("添加记录-----");
+            dynamicService.likeDynamicAndAddLikeCount(likeObjId,userId,likeStatus,dynamicId);
+            return "insert done";
+        }else {
+            //取消点赞
+            if (status==1){
+                System.out.println("取消-----");
+                dynamicService.cancelDynamicLikeAndReduceLikeCount(likeObjId,userId,dynamicId);
+                return "cancel";
+            }
+            //取消点赞后又点赞
+            if (status==0){
+                System.out.println("取消后------");
+                dynamicService.dynamicLikeAgainAfterCancelLikeAndAddLikeCount(likeObjId,userId,dynamicId);
+                return "after cancel";
+            }
+        }
         return "like dynamic done";
     }
 
 
     @RequestMapping("/likeComment")
     @ResponseBody
-    public String likeComment(@RequestParam(defaultValue = "1") Integer likeType, Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer commentId){
-        dynamicService.likeCommentAndAddLikeCount(likeType,likeObjId,userId,likeStatus,commentId);
+    //评论点赞
+    public String likeComment(Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer commentId){
+        Integer status = dynamicService.checkCommentLike(likeObjId, userId);
+        if (status==null){
+            System.out.println("添加记录-----");
+            dynamicService.likeCommentAndAddLikeCount(likeObjId,userId,likeStatus,commentId);
+            return "insert done";
+        }else {
+            //取消点赞
+            if (status==1){
+                System.out.println("取消-----");
+                dynamicService.cancelCommentLikeAndReduceLikeCount(likeObjId,userId,commentId);
+                return "cancel";
+            }
+            //取消后又点赞
+            if (status==0){
+                System.out.println("取消后----");
+                dynamicService.commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(likeObjId,userId,commentId);
+                return "after cancel";
+            }
+        }
         return "like comment done";
     }
 

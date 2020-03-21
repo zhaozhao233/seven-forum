@@ -22,6 +22,17 @@ public interface UserDynamicService {
 
     void likeDynamicAndAddLikeCount(Integer likeObjId,Integer userId,Integer likeStatus,Integer dynamicId);
 
-    void likeCommentAndAddLikeCount(Integer likeType, Integer likeObjId,Integer userId,Integer likeStatus,Integer commentId);
+    void likeCommentAndAddLikeCount(Integer likeObjId,Integer userId,Integer likeStatus,Integer commentId);
 
+    Integer checkDynamicLike(Integer likeObjId,Integer userId);
+
+    Integer checkCommentLike(Integer likeObjId,Integer userId);
+
+    void cancelDynamicLikeAndReduceLikeCount(Integer likeObjId,Integer userId,Integer dynamicId);
+
+    void cancelCommentLikeAndReduceLikeCount(Integer likeObjId,Integer userId,Integer commentId);
+
+    void dynamicLikeAgainAfterCancelLikeAndAddLikeCount(Integer likeObjId,Integer userId,Integer dynamicId);
+
+    void commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(Integer likeObjId,Integer userId,Integer commentId);
 }

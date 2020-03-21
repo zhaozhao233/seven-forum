@@ -52,14 +52,58 @@ public class UserDynamicServiceImpl implements UserDynamicService {
 
     @Transactional
     @Override
+    //点赞动态and点赞数+1
     public void likeDynamicAndAddLikeCount(Integer likeObjId, Integer userId, Integer likeStatus, Integer dynamicId) {
         dynamicDao.likeDynamic(likeObjId,userId,likeStatus);
         dynamicDao.addLikeDynamicCount(dynamicId);
     }
     @Transactional
     @Override
-    public void likeCommentAndAddLikeCount(Integer likeType, Integer likeObjId, Integer userId, Integer likeStatus, Integer commentId) {
-        dynamicDao.likeComment(likeType,likeObjId,userId,likeStatus);
+    //点赞评论and点赞数+1
+    public void likeCommentAndAddLikeCount(Integer likeObjId, Integer userId, Integer likeStatus, Integer commentId) {
+        dynamicDao.likeComment(likeObjId,userId,likeStatus);
+        dynamicDao.addLikeCommentCount(commentId);
+    }
+
+    @Override
+    public Integer checkDynamicLike(Integer likeObj, Integer userId) {
+        return dynamicDao.checkDynamicLike(likeObj, userId);
+    }
+
+    @Override
+    public Integer checkCommentLike(Integer likeObj, Integer userId) {
+        return dynamicDao.checkCommentLike(likeObj, userId);
+    }
+
+    @Override
+    @Transactional
+    //取消动态点赞and点赞数-1
+    public void cancelDynamicLikeAndReduceLikeCount(Integer likeObjId, Integer userId, Integer dynamicId) {
+        dynamicDao.cancelDynamicLike(likeObjId,userId);
+        dynamicDao.reduceLikeDynamicCount(dynamicId);
+    }
+
+    @Override
+    @Transactional
+    //取消评论点赞and点赞数-1
+    public void cancelCommentLikeAndReduceLikeCount(Integer likeObjId, Integer userId,Integer commentId) {
+        dynamicDao.cancelCommentLike(likeObjId,userId);
+        dynamicDao.reduceLikeCommentCount(commentId);
+    }
+
+    @Override
+    @Transactional
+    //动态   取消点赞后又点赞and点赞数+1
+    public void dynamicLikeAgainAfterCancelLikeAndAddLikeCount(Integer likeObjId, Integer userId, Integer dynamicId) {
+        dynamicDao.dynamicLikeAgainAfterCancelLike(likeObjId,userId);
+        dynamicDao.addLikeDynamicCount(dynamicId);
+    }
+
+    @Override
+    @Transactional
+    //评论 取消点赞后又点赞and点赞数+1
+    public void commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(Integer likeObjId, Integer userId, Integer commentId) {
+        dynamicDao.commentLikeAgainAfterCancelLike(likeObjId,userId);
         dynamicDao.addLikeCommentCount(commentId);
     }
 

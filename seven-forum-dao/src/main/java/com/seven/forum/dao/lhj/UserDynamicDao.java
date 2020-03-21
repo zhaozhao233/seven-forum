@@ -32,13 +32,38 @@ public interface UserDynamicDao {
     void likeDynamic(Integer likeObjId,Integer userId,Integer likeStatus);
 
     //点赞评论
-    void likeComment(Integer likeType, Integer likeObjId,Integer userId,Integer likeStatus);
+    void likeComment(Integer likeObjId,Integer userId,Integer likeStatus);
 
     //动态点赞数+1
     void addLikeDynamicCount(Integer dynamicId);
 
+    //动态点赞数-1
+    void reduceLikeDynamicCount(Integer dynamicId);
+
     //评论点赞数+1
     void addLikeCommentCount(Integer commentId);
+
+    //评论点赞数-1
+    void reduceLikeCommentCount(Integer commentId);
+
+    //取消动态点赞
+    void cancelDynamicLike(Integer dynamicId,Integer userId);
+
+    //取消评论点赞
+    void cancelCommentLike(Integer likeObjId,Integer userId);
+
+    //查询对这个动态点过赞没
+    Integer checkDynamicLike(Integer likeObjId,Integer userId);
+
+    //查询对这个评论点过赞没
+    Integer checkCommentLike(Integer likeObjId,Integer userId);
+
+    //动态   取消点赞后又点赞
+    void dynamicLikeAgainAfterCancelLike(Integer likeObjId,Integer userId);
+
+    //评论   取消点点赞又再点赞
+    void commentLikeAgainAfterCancelLike(Integer likeObjId,Integer userId);
+
 
 
 

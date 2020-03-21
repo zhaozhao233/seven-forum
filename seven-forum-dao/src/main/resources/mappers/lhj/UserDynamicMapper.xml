@@ -53,7 +53,7 @@
     <insert id="likeComment">
         /*点赞评论*/
         insert into like_log(like_type,like_obj_id,user_id,like_status)
-        values(#{likeType},#{likeObjId},#{userId},#{likeStatus})
+        values(1,#{likeObjId},#{userId},#{likeStatus})
     </insert>
 
     <update id="addLikeDynamicCount">
@@ -61,10 +61,52 @@
         update user_dynamic set like_count = like_count+1 where dynamic_id = #{dynamicId};
     </update>
 
+    <update id="reduceLikeDynamicCount">
+        /*动态点赞数-1*/
+        update user_dynamic set like_count = like_count-1 where dynamic_id = #{dynamicId};
+    </update>
+
     <update id="addLikeCommentCount">
         /*评论点赞数+1*/
         update user_comment set like_count = like_count+1 where comment_id = #{commentId};
     </update>
+
+    <update id="reduceLikeCommentCount">
+        update user_comment set like_count = like_count-1 where comment_id = #{commentId};
+    </update>
+
+    <update id="cancelDynamicLike">
+        /*取消动态点赞*/
+        update like_log set like_status = 0 where like_obj_id = #{dynamicId} and user_id = #{userId} and like_type = 0;
+    </update>
+
+    <update id="cancelCommentLike">
+        /*取消评论点赞*/
+        update like_log set like_status = 0 where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type = 1;
+    </update>
+    
+    <select id="checkDynamicLike" resultType="integer">
+        /*康康动态有没有点赞*/
+        select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=0;
+    </select>
+    
+    <select id="checkCommentLike" resultType="integer">
+        /*康康评论有没有点赞*/
+        select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=1;
+    </select>
+
+    <update id="dynamicLikeAgainAfterCancelLike">
+        /*动态 取消点赞后又点赞*/
+        update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 0;
+    </update>
+
+    <update id="commentLikeAgainAfterCancelLike">
+        /*评论 取消点赞后又点赞*/
+        update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 1;
+    </update>
+
+
+
 
 
 
