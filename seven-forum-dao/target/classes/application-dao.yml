@@ -20,4 +20,5 @@ pagehelper:
   reasonable: true
   # 说明用的是什么数据库
   helper-dialect: mysql
+  params: count=countSql
 

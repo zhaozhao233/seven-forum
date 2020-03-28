@@ -16,16 +16,6 @@ public class ReplyInfoEntity {
     private Date replyTime;
     private Integer replyStatus;
 
-    @Override
-    public String toString() {
-        return "ReplyInfoEntity{" +
-                "replyId=" + replyId +
-                ", userId=" + userId +
-                ", replyUserId=" + replyUserId +
-                ", replyPostId=" + replyPostId +
-                ", replyContent='" + replyContent + '\'' +
-                ", replyTime=" + replyTime +
-                ", replyStatus=" + replyStatus +
-                '}';
-    }
+    private String replyUserName;
+    private NfUser nfUser;
 }

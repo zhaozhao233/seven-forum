@@ -16,17 +16,7 @@ public class ReplyPostInfoEntity {
     private Integer topReplyPost;
     private Integer replyStatus;
 
-
-    @Override
-    public String toString() {
-        return "ReplyPostInfoEntity{" +
-                "replyPostId=" + replyPostId +
-                ", postId=" + postId +
-                ", userId=" + userId +
-                ", replyPostContent='" + replyPostContent + '\'' +
-                ", createTime=" + createTime +
-                ", topReplyPost=" + topReplyPost +
-                ", replyStatus=" + replyStatus +
-                '}';
-    }
+    private Long storey;
+    private Long replyCount;
+    private NfUser nfUser;
 }

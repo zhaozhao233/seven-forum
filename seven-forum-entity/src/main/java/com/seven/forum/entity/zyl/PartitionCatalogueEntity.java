@@ -10,14 +10,4 @@ public class PartitionCatalogueEntity {
     private String catalogueExplain;
     private Integer catalogueStatus;
 
-    @Override
-    public String toString() {
-        return "PartitionCatalogueEntity{" +
-                "catalogueId=" + catalogueId +
-                ", partitionId=" + partitionId +
-                ", catalogueName='" + catalogueName + '\'' +
-                ", catalogueExplain='" + catalogueExplain + '\'' +
-                ", catalogueStatus=" + catalogueStatus +
-                '}';
-    }
 }

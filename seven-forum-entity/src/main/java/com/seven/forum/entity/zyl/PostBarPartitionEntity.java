@@ -12,13 +12,4 @@ public class PostBarPartitionEntity {
     private Integer partitionStatus;
     private List<PartitionCatalogueEntity> partitionCatalogueEntities;
 
-    @Override
-    public String toString() {
-        return "PostBarPartitionEntity{" +
-                "partitionId=" + partitionId +
-                ", partitionName='" + partitionName + '\'' +
-                ", partitionStatus=" + partitionStatus +
-                ", partitionCatalogueEntities=" + partitionCatalogueEntities +
-                '}';
-    }
 }

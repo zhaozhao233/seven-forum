@@ -2,25 +2,171 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.seven.forum.dao.zyl.PostBarInfoDAO">
+<mapper namespace="com.seven.forum.dao.zyl.PostInfoDAO">
 
-    <insert id="insertPostInfo">
-        INSERT INTO post_info(post_bar_id, post_title, post_content, user_id)
-        VALUES (#{arg0}, #{arg1}, #{arg2}, #{arg3})
-    </insert>
 
-    <!--所有界面的帖子，通过置顶降序排序-->
-    <select id="listAllPostInfo" resultType="postInfoEntity">
-        SELECT post_id, post_bar_id, post_title, post_content, user_id, user_name,wonderful_post,visit_count
-        FROM post_info, nf_user
-        WHERE post_status = 1
+    <!--<select id="listAllPostInfos" resultType="postInfoEntity">-->
+    <!--SELECT post_id, post_title, post_content, A.user_id, user_name,wonderful_post,visit_count,create_time,top_post-->
+    <!--FROM post_info A, nf_user B-->
+    <!--WHERE post_status = 1-->
+    <!--AND post_bar_id = #{arg0}-->
+    <!--AND A.user_id = B.user_id-->
+    <!--ORDER BY top_post DESC, create_time-->
+    <!--</select>-->
+
+    <!--<resultMap id="postBarInfo" type="">-->
+    <!--<result property="postBarName" column="post_bar_name"/>-->
+    <!--<result property="postBarExplain" column="post_bar_explain"/>-->
+    <!--<result property="postBarLogoUrl" column="post_bar_logo_url"/>-->
+    <!--<result property="postCount" column="post_count"/>-->
+    <!--<result property="userCount" column="user_count"/>-->
+    <!--</resultMap>-->
+
+    <resultMap id="postInfo" type="postInfoEntity">
+        <id property="postId" column="post_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postContent" column="post_content"/>
+        <result property="topPost" column="top_post"/>
+        <result property="wonderfulPost" column="wonderful_post"/>
+        <result property="createTime" column="create_time"/>
+        <result property="replyCount" column="num"/>
+    </resultMap>
+
+    <!--某个贴吧所有界面的帖子，通过置顶降序排序-->
+    <select id="listAllPostInfos" resultMap="postInfo">
+        select COUNT(*) num,post_info.post_id,post_title, post_content, top_post, wonderful_post, user_name, post_info.create_time
+        FROM post_info
+        LEFT JOIN reply_post_info
+        ON post_info.post_id = reply_post_info.post_id
+        LEFT JOIN nf_user
+        ON nf_user.user_id = post_info.user_id
+        WHERE post_status = 1 AND post_info.post_bar_id = #{param1} AND nf_user.status = 1
+        GROUP BY post_info.post_id
         ORDER BY top_post DESC, create_time
     </select>
 
-    <!--精品贴块的帖子-->
-    <select id="listAllWonderfulPost" resultType="postInfoEntity">
-        SELECT post_id, post_bar_id, post_title, post_content, user_id, user_name
-        FROM post_info, nf_user
-        WHERE post_status = 1 AND wonderful_post = 1
+    <!--有坑：关于这个计数具体还是看那些用户的状态变成0之后怎么处理的，嗯……-->
+    <select id="countPostInfoByPostBarId" resultType="long">
+        SELECT COUNT(*) FROM post_info WHERE post_status = 1 AND post_bar_id = #{param1}
     </select>
+
+    <!--精品贴块的帖子-->
+    <select id="listAllWonderfulPost" resultMap="postInfo">
+        select COUNT(*) num,post_info.post_id,post_title, post_content, top_post, wonderful_post, user_name, post_info.create_time
+        FROM post_info
+        LEFT JOIN reply_post_info
+        ON post_info.post_id = reply_post_info.post_id
+        LEFT JOIN nf_user
+        ON nf_user.user_id = post_info.user_id
+        WHERE post_status = 1 AND post_info.post_bar_id = #{param1}
+        AND nf_user.status = 1 AND wonderful_post = 1
+        GROUP BY post_info.post_id
+        ORDER BY top_post DESC, create_time
+    </select>
+
+    <select id="countWonderfulPostInfoByPostBarId" resultType="long">
+        SELECT COUNT(*) FROM post_info WHERE post_status = 1 AND wonderful_post = 1 AND post_bar_id = #{param1}
+    </select>
+
+    <!--查询贴吧目录名称和目录id以及贴吧信息-->
+    <select id="getCatalogueByPostBarId" resultType="partitionCatalogueEntity">
+        SELECT A.catalogue_id, catalogue_name
+        FROM partition_catalogue A, post_bar_info B
+        WHERE A.catalogue_id = B.catalogue_id
+        AND post_bar_id = #{arg0}
+    </select>
+
+    <!--&lt;!&ndash;查询帖子&ndash;&gt;-->
+
+    <!--<select id="getPostInfoById" resultType="postInfoEntity">-->
+    <!--SELECT post_id, post_bar_id, post_title, post_content,-->
+    <!--user_id, top_post, wonderful_post, audit, visit_count,create_time -->
+    <!--FROM post_info-->
+    <!--WHERE post_id = #{arg0} AND post_status = 1-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;查询一个帖子有多少回帖&ndash;&gt;-->
+    <!--<select id="countPostReplies" resultType="long">-->
+    <!--SELECT COUNT(*)-->
+    <!--FROM reply_post_info-->
+    <!--WHERE post_id = #{arg0}-->
+    <!--AND reply_status = 1-->
+    <!--</select>-->
+
+    <!--<select id="listPostRepliesByPostId" resultType="replyPostInfoEntity">-->
+    <!--SELECT reply_post_id, post_id, A.user_id, reply_post_content,-->
+    <!--create_time, user_name, user_img_url-->
+    <!--FROM reply_post_info A, nf_user B-->
+    <!--WHERE post_id = #{arg0}-->
+    <!--AND reply_status = 1-->
+    <!--ORDER top_reply_post DESC-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;分割线、、、、、、、、、、、、、、、、、&ndash;&gt;-->
+    <!--<insert id="insertPostInfo">-->
+    <!--INSERT INTO post_info(post_bar_id, post_title, post_content, user_id)-->
+    <!--VALUES (#{arg0}, #{arg1}, #{arg2}, #{arg3})-->
+    <!--</insert>-->
+
+    <!--根据帖子id查询贴吧信息显示在头部-->
+    <select id="getPostBarByPostId" resultType="postBarInfoEntity">
+        SELECT post_bar_id, post_bar_name, post_count, user_count,post_bar_logo_url
+        FROM post_bar_info
+        WHERE post_bar_id = (SELECT post_bar_id FROM post_info WHERE post_id = #{arg0})
+    </select>
+
+    <resultMap id="listPostsAndCountReply" type="replyPostInfoEntity">
+        <id property="replyPostId" column="reply_post_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="replyPostContent" column="reply_post_content"/>
+        <result property="createTime" column="create_time"/>
+        <result property="storey" column="storey"/>
+        <result property="replyCount" column="num"/>
+        <result property="nfUser.userName" column="user_name"/>
+        <result property="nfUser.userImgUrl" column="user_img_url"/>
+        <result property="nfUser.vipId" column="vip_id"/>
+    </resultMap>
+    <!--通过帖子id，查出回贴（包括1楼）和回复回帖的数量-->
+    <select id="listPostsAndCountReply" resultMap="listPostsAndCountReply">
+        SELECT @i:=@i+1 storey, COUNT(*) num,A.reply_post_id,A.user_id,A.reply_post_content,A.create_time,
+        C.user_name,C.user_img_url,C.vip_id
+        FROM (select  *,@i:=0 from reply_post_info) A
+        LEFT JOIN reply_info B ON A.reply_post_id = B.reply_post_id
+        LEFT JOIN nf_user C ON A.user_id = C.user_id
+        WHERE A.reply_status = 1 AND C.status = 1 AND A.post_id=#{arg0}
+        GROUP BY A.reply_post_id
+        ORDER BY A.create_time
+    </select>
+
+    <!--通过帖子id，查询其下的所有回帖的回复-->
+    <!--通过帖子id，获取其下所有回帖id，传递给listRepliesInReplyPostByPostId-->
+    <select id="listReplyPostIdsByPostId" resultType="long">
+        SELECT reply_post_id FROM reply_post_info WHERE post_id=#{arg0}
+    </select>
+
+    <resultMap id="replyInfo" type="replyInfoEntity">
+        <id property="replyId" column="reply_id"/>
+        <result property="replyPostId" column="reply_post_id"/>
+        <result property="replyContent" column="reply_content"/>
+        <result property="replyTime" column="reply_time"/>
+        <result property="replyUserName" column="reply_user_name"/>
+        <result property="nfUser.userName" column="user_name"/>
+        <result property="nfUser.userImgUrl" column="user_img_url"/>
+    </resultMap>
+
+    <select id="listRepliesInReplyPostByPostId" resultMap="replyInfo">
+        SELECT C.*, D.user_name reply_user_name FROM
+        (SELECT A.reply_id,A.reply_post_id,A.reply_content,A.reply_time,A.user_id,A.reply_user_id,
+        B.user_name,B.user_img_url
+        FROM reply_info A,nf_user B
+        <where>A.reply_post_id IN
+            <foreach collection="list" open="(" close=")" item="replyPostId" separator=",">
+                #{replyPostId}
+            </foreach>
+            AND A.user_id = B.user_id AND A.reply_status = 1 AND B.status = 1
+        </where>
+        ) C LEFT JOIN nf_user D on C.reply_user_id = D.user_id ORDER BY C.reply_time
+    </select>
+
 </mapper>

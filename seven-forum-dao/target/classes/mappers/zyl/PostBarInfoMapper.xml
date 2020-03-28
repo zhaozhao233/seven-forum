@@ -4,15 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seven.forum.dao.zyl.PostBarInfoDAO">
 
+    <resultMap id="postBarInfo" type="postBarInfoEntity">
+        <id property="post_bar_id" column="postBarId"/>
+        <result property="post_bar_name" column="postBarName"/>
+        <result property="post_bar_explain" column="postBarExplain"/>
+        <result property="post_bar_logo_url" column="postBarLogoUrl"/>
+        <result property="post_count" column="postCount"/>
+        <result property="user_count" column="userCount"/>
+        <result property="createTime" column="createTime"/>
+    </resultMap>
+
     <!--热门贴吧（前100中的8个）-->
-    <select id="listPopularPostBarId" resultType="int">
-        SELECT post_bar_id FROM post_bar_info ORDER BY user_count DESC LIMIT 100
+    <select id="listPopularPostBarIds" resultType="int">
+        SELECT post_bar_id FROM post_bar_info WHERE post_bar_status = 1 ORDER BY user_count DESC LIMIT 100
     </select>
 
-    <select id="listPopularPostBar" resultType="postBarInfoEntity">
-        SELECT post_bar_id, catalogue_id, post_bar_name, post_bar_explain,
-        post_bar_logo_url, user_id, post_count, user_count, create_time,
-        post_bar_status
+    <select id="listPopularPostBars" resultType="postBarInfoEntity">
+        SELECT post_bar_id, post_bar_name, post_bar_explain,
+        post_bar_logo_url, post_count, user_count, create_time,
         FROM post_bar_info
         WHERE post_bar_id in
         <foreach collection="collection" open="(" close=")" index="index" item="id" separator=",">
@@ -20,42 +29,62 @@
         </foreach>
     </select>
 
-    <!--根据关键字模糊搜索贴吧-->
-    <select id="listPostBarByName" resultType="string">
-        SELECT * FROM post_bar_info
-        WHERE post_bar_name LIKE CONCAT(CONCAT('%', #{arg0}), '%')
-    </select>
-
     <!--某个目录下的贴吧信息-->
-    <select id="listPostBarByCatalogueId" resultType="postBarInfoEntity">
-        SELECT post_bar_id,catalogue_id,post_bar_name,
-          post_bar_explain, post_bar_logo_url, user_id,
-          post_count, user_count, create_time, post_bar_status
+    <select id="listPostBarsByCatalogueId" resultMap="postBarInfo">
+        SELECT post_bar_id, post_bar_name,
+          post_bar_explain, post_bar_logo_url,
+          post_count, user_count, create_time
         FROM post_bar_info
         WHERE post_bar_status = 1
-        AND catalogue_id = #{arg0}
+        AND catalogue_id = #{param1}
+        ORDER BY post_bar_id
+    </select>
+
+    <select id="countPostBarsByCatalogueId" resultType="int">
+        SELECT COUNT(*) FROM post_bar_info
+        WHERE post_bar_status = 1
+        AND catalogue_id = #{param1}
         ORDER BY post_bar_id
     </select>
 
     <!--分区下的贴吧信息-->
-    <select id="listPostBarByPartitionId" resultType="postBarInfoEntity">
-        SELECT post_bar_id,catalogue_id,post_bar_name,
-          post_bar_explain, post_bar_logo_url, user_id,
+    <select id="listPostBarsByPartitionId" resultMap="postBarInfo">
+        SELECT post_bar_id, post_bar_name,
+          post_bar_explain, post_bar_logo_url,
           post_count, user_count, create_time
         FROM post_bar_info
         WHERE post_bar_status = 1
         AND catalogue_id IN
-        (SELECT catalogue_id FROM partition_catalogue WHERE partition_id=#{arg0})
+        (SELECT catalogue_id FROM partition_catalogue WHERE partition_id=#{param1})
         ORDER BY post_bar_id
     </select>
 
-    <!--指定id的贴吧信息,既然能指定id那状态就无所谓了，能指定id说明贴吧能被选择/看到-->
-    <select id="listPostBarById" resultType="postBarInfoEntity">
+    <select id="countPostBarsByPartitionId" resultType="int">
+        SELECT COUNT(*) FROM post_bar_info
+        WHERE post_bar_status = 1
+        AND catalogue_id IN
+        (SELECT catalogue_id FROM partition_catalogue WHERE partition_id=#{param1})
+    </select>
+    <!--fengexian-->
+    <!--根据关键字模糊搜索贴吧-->
+    <select id="listPostBarsByName" resultType="string">
+        SELECT * FROM post_bar_info
+        WHERE post_bar_name LIKE CONCAT(CONCAT('%', #{arg0}), '%')
+        AND post_bar_status = 1
+    </select>
+
+
+
+
+
+    <!--指定id的贴吧信息-->
+    <select id="getPostBarById" resultType="postBarInfoEntity">
         SELECT post_bar_id,catalogue_id,post_bar_name,
           post_bar_explain, post_bar_logo_url, user_id,
           post_count, user_count, create_time
         FROM post_bar_info
         WHERE post_bar_id = #{arg0}
+        AND post_bar_status = 1
     </select>
 
     <!--判断吧名是否存在-->

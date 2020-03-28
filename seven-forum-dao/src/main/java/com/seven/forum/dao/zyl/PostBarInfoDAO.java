@@ -1,21 +1,29 @@
 package com.seven.forum.dao.zyl;
 
 import com.seven.forum.entity.zyl.PostBarInfoEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
 
 public interface PostBarInfoDAO {
 
-    List<Integer> listPopularPostBarId();
+    List<Integer> listPopularPostBarIds();
 
-    List<PostBarInfoEntity> listPopularPostBar(Set<Integer> postBarId);
+    List<PostBarInfoEntity> listPopularPostBars(Set<Integer> postBarId);
 
-    List<PostBarInfoEntity> listPostBarByPartitionId(Long partitionId);
+    List<PostBarInfoEntity> listPostBarsByCatalogueId(Long catalogueId, @Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
 
-    List<PostBarInfoEntity> listPostBarByCatalogueId(Long catalogueId);
+    Integer countPostBarsByCatalogueId(Long catalogueId);
 
-    List<PostBarInfoEntity> listPostBarById(Long postBarId);
+    PostBarInfoEntity getPostBarById(Long postBarId);
+
+    List<PostBarInfoEntity> listPostBarsByPartitionId(Long partitionId, @Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
+
+    Integer countPostBarsByPartitionId(Long partitionId);
+
+    // ----
+
 
     Integer ifExist(String postBarName);
 

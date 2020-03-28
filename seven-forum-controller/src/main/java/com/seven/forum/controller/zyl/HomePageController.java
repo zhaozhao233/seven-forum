@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 @Slf4j
-@RequestMapping("/api/home")
+@RequestMapping("/api")
 public class HomePageController {
 
     @Autowired
     private PostBarInfoService postBarInfoService;
-    @RequestMapping("/popularPostBars")
+    @RequestMapping("/home/popularPostBars")
     public ResponseVO popularPostBar() {
         log.debug("查询八个热门贴吧");
-        return new ResponseVO(200, "success", postBarInfoService.listEightPopularPostBar());
+        return new ResponseVO(200, "success", postBarInfoService.listEightPopularPostBars());
     }
 }

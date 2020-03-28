@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.zyl.ReplyPostInfoDAO">
+
+    <!--一个回帖里面有多少回复-->
+    <select id="countReplies" resultType="int">
+        SELECT COUNT(*)
+        FROM reply_post_info
+        WHERE reply_post_id = #{arg0}
+        AND reply_status = 1
+    </select>
+
+    <!--一个回帖通过点击查看，显示所有回复-->
+    <select id="listRepliesByReplyPostId" resultType="replyInfoEntity">
+        SELECT reply_id, A.user_id, reply_content, reply_time,
+        user_name, user_img_url
+        FROM reply_info A, nf_user B
+        WHERE reply_post_id = #{arg0}
+        AND reply_status = 1
+    </select>
+
+
+</mapper>

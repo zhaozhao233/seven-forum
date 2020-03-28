@@ -9,14 +9,4 @@ public class PostBarImpowerEntity {
     private Integer allowWonderfulPost;
     private Integer allowClearPost;
 
-    @Override
-    public String toString() {
-        return "PostBarImpowerEntity{" +
-                "postBarId=" + postBarId +
-                ", userId=" + userId +
-                ", allowTopPost=" + allowTopPost +
-                ", allowWonderfulPost=" + allowWonderfulPost +
-                ", allowClearPost=" + allowClearPost +
-                '}';
-    }
 }

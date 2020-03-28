@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.util.Date;
 
 @Data
-@Document(indexName = "post_info")
+@Document(indexName = "post_info", type = "_doc")
 public class PostInfoEntity {
 
     @Id
@@ -23,10 +23,10 @@ public class PostInfoEntity {
     private String postContent;
     @Field(type = FieldType.Long)
     private Long userId;
-    @Field(type = FieldType.Long)
-    private Long topPost;
-    @Field(type = FieldType.Long)
-    private Long wonderfulPost;
+    @Field(type = FieldType.Integer)
+    private Integer topPost;
+    @Field(type = FieldType.Integer)
+    private Integer wonderfulPost;
     @Field(type = FieldType.Integer)
     private Integer audit;
     @Field(type = FieldType.Long)
@@ -35,20 +35,7 @@ public class PostInfoEntity {
     private Integer postStatus;
     @Field(type = FieldType.Date)
     private Date createTime;
+    private Integer replyCount;
+    private String userName;
 
-    @Override
-    public String toString() {
-        return "PostInfoEntity{" +
-                "postId=" + postId +
-                ", postBarId=" + postBarId +
-                ", postTitle='" + postTitle + '\'' +
-                ", postContent='" + postContent + '\'' +
-                ", userId=" + userId +
-                ", topPost=" + topPost +
-                ", wonderfulPost=" + wonderfulPost +
-                ", visitCount=" + visitCount +
-                ", postStatus=" + postStatus +
-                ", createTime=" + createTime +
-                '}';
-    }
 }

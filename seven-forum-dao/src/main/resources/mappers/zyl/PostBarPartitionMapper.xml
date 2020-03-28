@@ -7,7 +7,7 @@
     <resultMap id="allPartitionsAndCatalogues" type="postBarPartitionEntity">
         <id column="partition_id" property="partitionId"/>
         <result column="partition_name" property="partitionName"/>
-        <collection property="partitionCatalogueEntities" ofType="partitionCatalogueEntity" fetchType="lazy">
+        <collection property="partitionCatalogueEntities" ofType="partitionCatalogueEntity">
             <id column="catalogue_id" property="catalogueId"/>
             <result column="catalogue_name" property="catalogueName"/>
         </collection>
