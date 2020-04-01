@@ -7,9 +7,10 @@
         /*显示关注人的动态*/
        select dynamic_id, u.user_id, dynamic_content, dynamic_status,
        dynamic_time, like_count, comment_count,
-       a.user_img_url,a.user_name from user_dynamic u inner join
-       nf_user a
-       where u.user_id  in (select attention_user_id  from user_attention_user where user_id=#{userId})
+       a.user_img_url,a.user_name from user_dynamic
+       u inner join nf_user a
+       where u.user_id = #{userId} or  u.user_id
+       in (select attention_user_id  from user_attention_user where user_id= #{userId})
        order by dynamic_time desc
     </select>
 
@@ -104,10 +105,6 @@
         /*评论 取消点赞后又点赞*/
         update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 1;
     </update>
-
-
-
-
 
 
 

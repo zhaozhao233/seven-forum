@@ -28,5 +28,11 @@
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="seven_forum1" uuid="264ee417-40fe-45a0-a42a-7b0792264343">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
+    </data-source>
   </component>
 </project>
