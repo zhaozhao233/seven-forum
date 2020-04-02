@@ -23,10 +23,10 @@ public class SpringBootApp {
 //        for (PostBarPartitionEntity postBarPartitionEntity : postBarPartitionEntities) {
 //            System.out.println(postBarPartitionEntity);
 //        }
-        UserDynamicService bean = run.getBean(UserDynamicService.class, run);
-        List<UserDynamicEntity> userDynamicEntities = bean.listFollowUserDynamic(1,2,123);
-        for (UserDynamicEntity userDynamicEntity : userDynamicEntities) {
-            System.out.println("userDynamicEntity = " + userDynamicEntity);
-        }
+//        UserDynamicService bean = run.getBean(UserDynamicService.class, run);
+//        List<UserDynamicEntity> userDynamicEntities = bean.listFollowUserDynamic(1,2,123);
+//        for (UserDynamicEntity userDynamicEntity : userDynamicEntities) {
+//            System.out.println("userDynamicEntity = " + userDynamicEntity);
+//        }
     }
 }
