@@ -14,7 +14,7 @@ mybatis:
     #   下划线转换为大写
     map-underscore-to-camel-case: true
   # 辅助功能，mapper文件里找文件时，不用写全部路径
-  type-aliases-package: com.entity
+  type-aliases-package: com.seven.forum.entity
 pagehelper:
   support-methods-arguments: true
   reasonable: true
