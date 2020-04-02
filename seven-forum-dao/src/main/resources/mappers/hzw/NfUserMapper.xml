@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seven.forum.dao.hzw.NfUserDao">
 
+
     <resultMap id="nfUser" type="com.seven.forum.entity.hzw.NfUserEntity">
         <id property="userId" column="user_id"></id>
         <result property="userPhone" column="user_phone"></result>
