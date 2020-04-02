@@ -12,4 +12,6 @@
             resultType="com.seven.forum.entity.zyl.PostBarPartitionEntity">
         SELECT A.partition_id,partition_name,catalogue_id,catalogue_name FROM post_bar_partition A,partition_catalogue B WHERE A.partition_id = B.partition_id AND partition_status=1 AND catalogue_status=1
     </select>
+
+
 </mapper>

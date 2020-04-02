@@ -48,6 +48,8 @@
             <artifactId>fastjson</artifactId>
         </dependency>
 
+
+
     </dependencies>
 
     <build>

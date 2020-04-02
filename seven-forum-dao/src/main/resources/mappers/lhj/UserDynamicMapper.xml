@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.lhj.UserDynamicDao">
+    <select id="listFollowUserDynamic" resultType="com.seven.forum.entity.lhj.UserDynamicEntity">
+        /*显示关注人的动态*/
+       select dynamic_id, u.user_id, dynamic_content, dynamic_status,
+       dynamic_time, like_count, comment_count,
+       a.user_img_url,a.user_name from user_dynamic
+       u inner join nf_user a
+       where u.user_id = #{userId} or  u.user_id
+       in (select attention_user_id  from user_attention_user where user_id= #{userId})
+       order by dynamic_time desc
+    </select>
+
+    <select id="listCommentByDynamicId" resultType="com.seven.forum.entity.lhj.UserCommentEntity">
+        /*显示评论*/
+       select comment_id, a.user_id, dynamic_id, dynamic_status, reply_user_id, comment_time,
+       like_count, comment_content, comment_status,b.user_img_url,b.user_name
+       from user_comment a inner join nf_user b where dynamic_id = #{dynamicId} order by comment_time desc
+    </select>
+
+    <insert id="commentDynamic">
+        /*评论*/
+        insert into user_comment(user_id, dynamic_id, comment_content, comment_status)
+            values (#{userId},#{dynamicId},#{commentContent},#{commentStatus})
+    </insert>
+
+    <insert id="replyUser">
+        /*回复*/
+        insert into user_comment(user_id,dynamic_id,comment_content,reply_user_id,comment_status)
+        value (#{userId},#{dynamicId},#{commentContent},#{replyUserId},#{commentStatus})
+    </insert>
+
+    <insert id="releaseDynamic">
+        /*发布动态*/
+        insert into user_dynamic(user_id, dynamic_content)
+        value (#{userId},#{dynamicContent})
+    </insert>
+
+    <update id="addCommentCount">
+        /*评论数+1*/
+        update user_dynamic
+        set comment_count = comment_count+1 where dynamic_id = #{dynamicId}
+    </update>
+
+    <insert id="likeDynamic">
+        /*点赞动态*/
+        insert into like_log (like_obj_id, user_id, like_status)
+        values (#{likeObjId},#{userId},#{likeStatus})
+    </insert>
+
+    <insert id="likeComment">
+        /*点赞评论*/
+        insert into like_log(like_type,like_obj_id,user_id,like_status)
+        values(1,#{likeObjId},#{userId},#{likeStatus})
+    </insert>
+
+    <update id="addLikeDynamicCount">
+        /*动态点赞数+1*/
+        update user_dynamic set like_count = like_count+1 where dynamic_id = #{dynamicId};
+    </update>
+
+    <update id="reduceLikeDynamicCount">
+        /*动态点赞数-1*/
+        update user_dynamic set like_count = like_count-1 where dynamic_id = #{dynamicId};
+    </update>
+
+    <update id="addLikeCommentCount">
+        /*评论点赞数+1*/
+        update user_comment set like_count = like_count+1 where comment_id = #{commentId};
+    </update>
+
+    <update id="reduceLikeCommentCount">
+        update user_comment set like_count = like_count-1 where comment_id = #{commentId};
+    </update>
+
+    <update id="cancelDynamicLike">
+        /*取消动态点赞*/
+        update like_log set like_status = 0 where like_obj_id = #{dynamicId} and user_id = #{userId} and like_type = 0;
+    </update>
+
+    <update id="cancelCommentLike">
+        /*取消评论点赞*/
+        update like_log set like_status = 0 where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type = 1;
+    </update>
+    
+    <select id="checkDynamicLike" resultType="integer">
+        /*康康动态有没有点赞*/
+        select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=0;
+    </select>
+    
+    <select id="checkCommentLike" resultType="integer">
+        /*康康评论有没有点赞*/
+        select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=1;
+    </select>
+
+    <update id="dynamicLikeAgainAfterCancelLike">
+        /*动态 取消点赞后又点赞*/
+        update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 0;
+    </update>
+
+    <update id="commentLikeAgainAfterCancelLike">
+        /*评论 取消点赞后又点赞*/
+        update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 1;
+    </update>
+
+
+
+</mapper>
