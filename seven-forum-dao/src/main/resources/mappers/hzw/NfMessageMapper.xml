@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.hzw.NfMessageDao">
+
+
+
+<!--    <resultMap id="messageTypeMap" type="com.seven.forum.entity.hzw.message.UserMessageTypeEntity">-->
+<!--        <association property="messageTypeEntity" javaType="com.seven.forum.entity.hzw.message.MessageTypeEntity" >-->
+<!--            <id column="typeid" property="messageTypeId"/>-->
+<!--            <result column="messagename" property="messageName"/>-->
+<!--        </association>-->
+<!--        <association property="unreadCount" select="countForNfMessageByUserIdType" column="typeid"></association>-->
+<!--        <collection property="nfMessageEntityList" select="listNfMessageByUserIdType" column="messageType=typeid,userId=userId" ></collection>-->
+<!--    </resultMap>-->
+
+<!--    <select id="getMessageType" resultMap="messageTypeMap" >-->
+<!--        select message_type_id as typeid, message_name as messagename from message_type where message_type_id = #{messageTypeId}-->
+<!--    </select>-->
+
+<!--    <select id="listNfMessageByUserIdType" resultType="com.seven.forum.entity.hzw.message.NfMessageEntity">-->
+<!--        select message_id, user_id, message_type_id, message_read, author_id, message_content, message_time from nf_message-->
+<!--        where message_type_id = #{messageType} and user_id = #{userId}-->
+<!--    </select>-->
+
+
+
+<!--    查询指定用户未读消息的数量-->
+    <select id="countForNfMessageByUserId" resultType="int">
+        select count(*) from nf_message where user_id = #{userId} and message_read = 0
+    </select>
+<!--    查询指定用户的指定类型的未读消息数量-->
+    <select id="countForNfMessageByUserIdType" resultType="int">
+        select count(*) from nf_message
+        where user_id = #{userId} and message_type_id = #{messageType} and message_read = 0
+    </select>
+    <!--    查询指定用户所有消息-->
+    <select id="listNfMessageByUserId" resultType="com.seven.forum.entity.hzw.message.NfMessageEntity">
+        select message_id, user_id, message_type_id, message_read, author_id, message_content, message_time from nf_message
+        where user_id = #{userId}
+    </select>
+    <!--    查询指定用户的指定类型的消息-->
+    <select id="listNfMessageByUserIdType" resultType="com.seven.forum.entity.hzw.message.NfMessageEntity">
+        select message_id, user_id, message_type_id, message_read, author_id, message_content, message_time from nf_message
+        where message_type_id = #{messageType} and user_id = #{userId}
+    </select>
+    <!--    查询制定用户所有没有被查看的消息-->
+    <select id="listUnreadNfMessageByUserId" resultType="com.seven.forum.entity.hzw.message.NfMessageEntity">
+        select message_id, user_id, message_type_id, message_read, author_id, message_content, message_time from nf_message
+        where user_id = #{userId} and message_read = 0
+    </select>
+<!--    查询所有消息类型-->
+    <select id="listMessageType" resultType="com.seven.forum.entity.hzw.message.MessageTypeEntity">
+        select message_type_id, message_name from message_type
+    </select>
+<!--    查询指定消息类型-->
+    <select id="getMessageType" resultType="com.seven.forum.entity.hzw.message.MessageTypeEntity">
+        select message_type_id, message_name from message_type where message_type_id = #{messageTypeId}
+    </select>
+
+<!--    将指定用户的未读消息变为已读-->
+    <update id="updateReadNfMessageByUserId">
+        update nf_message set message_read = 1 where user_id = #{userId}
+    </update>
+<!--    将指定用户的指定未读信息批量变为已读-->
+    <update id="updateReadNfMessageListByUserIdMessageId">
+        update nf_message set message_read = 1 where user_id = #{userId} and message_id in
+        (
+        <foreach collection="messageIdList" separator="," item="messageId" >
+            #{messageId}
+        </foreach>
+        )
+    </update>
+<!--    将指定类型的未读消息变为已读-->
+    <update id="updateReadNfMessageByUserIdType">
+        update nf_message set message_read = 1 where user_id = #{userId} and message_type_id = #{messageType}
+    </update>
+
+
+<!--    插入一条消息-->
+    <insert id="insertMessage">
+        insert into nf_message(user_id, message_type_id, message_read, author_id, message_content, message_time)
+        values (#{message.userId},#{message.messageTypeId},#{message.messageRead},#{message.authorId},#{message.messageContent},#{message.messageTime})
+    </insert>
+<!--    添加一个消息类型-->
+    <insert id="insertMessageType">
+        insert into message_type(message_name) values (#{messageType.messageName})
+    </insert>
+<!--    批量插入消息-->
+    <insert id="insertMessageList">
+        insert into nf_message(user_id, message_type_id, message_read, author_id, message_content, message_time) values
+        <foreach collection="userIdList" separator="," item="userId">
+            (#{userId},#{message.messageTypeId},#{message.messageRead},#{message.authorId},#{message.messageContent},#{message.messageTime})
+        </foreach>
+    </insert>
+</mapper>
