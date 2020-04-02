@@ -11,5 +11,13 @@
 
     <artifactId>seven-forum-util</artifactId>
 
+    <dependencies>
+        <!--阿里云手机验证码-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+    </dependencies>
 
 </project>
