@@ -2,19 +2,16 @@ package com.seven.forum.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class ResponseVO<T> {
 
     private Integer code;
     private String message;
     private T data;
-
-    // 一定要有构造函数，就算加了@Data注解也很有可能坑si自己
-    public ResponseVO() {
-
-    }
 
     public Integer getCode() {
         return code;
@@ -38,5 +35,10 @@ public class ResponseVO<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public ResponseVO(Integer code, String message) {
+        this.code = code;
+        this.message = message;
     }
 }

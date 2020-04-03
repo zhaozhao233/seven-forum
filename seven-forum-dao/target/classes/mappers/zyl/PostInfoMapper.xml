@@ -134,9 +134,14 @@
         FROM (select  *,@i:=0 from reply_post_info) A
         LEFT JOIN reply_info B ON A.reply_post_id = B.reply_post_id
         LEFT JOIN nf_user C ON A.user_id = C.user_id
-        WHERE A.reply_status = 1 AND C.status = 1 AND A.post_id=#{arg0}
+        WHERE A.reply_status = 1 AND C.status = 1 AND A.post_id=#{param1}
         GROUP BY A.reply_post_id
         ORDER BY A.create_time
+    </select>
+
+    <!--计算帖子下有多少回帖-->
+    <select id="countReplyPosts" resultType="long">
+        SELECT COUNT(*) FROM reply_post_info WHERE post_id = #{arg0}
     </select>
 
     <!--通过帖子id，查询其下的所有回帖的回复-->
@@ -169,4 +174,48 @@
         ) C LEFT JOIN nf_user D on C.reply_user_id = D.user_id ORDER BY C.reply_time
     </select>
 
+    <!--主要目的：只看楼主功能-->
+    <!--根据帖子id查出作者id，然后再通过作者id查出所有该帖子id下的回帖-->
+    <!--然后还是调用listRepliesInReplyPostByPostId语句配合查询-->
+    <!--<select id="listJustLandlordReplyPostIdsByPostId" resultType="long">-->
+        <!--SELECT  reply_post_id FROM reply_post_info-->
+        <!--WHERE post_id=#{arg0}-->
+        <!--AND user_id = (SELECT user_id FROM post_info WHERE post_id = #{arg0})-->
+        <!--AND reply_status = 1-->
+        <!--ORDER BY create_time-->
+    <!--</select>-->
+
+    <!--通过帖子id，查出楼主的回帖和回复回帖的数量-->
+    <select id="listJustLandlordPostsAndCountReply" resultMap="listPostsAndCountReply">
+        SELECT @i:=@i+1 storey, COUNT(*) num,A.reply_post_id,A.user_id,A.reply_post_content,A.create_time,
+        C.user_name,C.user_img_url,C.vip_id
+        FROM (select  *,@i:=0 from reply_post_info) A
+        LEFT JOIN reply_info B ON A.reply_post_id = B.reply_post_id
+        LEFT JOIN nf_user C ON A.user_id = C.user_id
+        WHERE A.reply_status = 1 AND C.status = 1 AND A.post_id=#{arg0}
+        AND A.user_id = (SELECT user_id FROM post_info WHERE post_id = #{arg0})
+        GROUP BY A.reply_post_id
+        ORDER BY A.create_time
+    </select>
+
+    <!--用户的回复-->
+    <insert id="insertReply">
+        INSERT INTO reply_info(user_id, reply_user_id, reply_post_id, reply_content, reply_status)
+        VALUES (#{userId}, #{replyUserId}, #{replyPostId}, #{replyContent}, 1)
+    </insert>
+
+    <!--用户回帖,不置顶，状态正常-->
+    <insert id="insertReplyPost">
+        INSERT INTO reply_post_info(post_id, user_id, reply_post_content, top_reply_post, reply_status)
+        VALUES (#{postId}, #{userId}, #{replyPostContent}, 0, 1)
+    </insert>
+
+    <!--用户发帖,首先在帖子表插入数据，然后再在回帖表插入数据-->
+    <insert id="insertPost">
+        <selectKey resultType="long" order="AFTER" keyProperty="postId">
+            select last_insert_id()
+        </selectKey>
+        INSERT INTO post_info(post_bar_id, post_title, post_content, user_id, top_post, wonderful_post, audit, visit_count, post_status)
+        VALUES (#{postBarId}, #{postTitle}, #{postContent}, #{userId}, 0, 0, 0, 0, 1)
+    </insert>
 </mapper>

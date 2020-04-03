@@ -19,6 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="seven-forum" options="-parameters" />
       <module name="seven-forum-controller" options="-parameters" />
       <module name="seven-forum-dao" options="-parameters" />
       <module name="seven-forum-entity" options="-parameters" />

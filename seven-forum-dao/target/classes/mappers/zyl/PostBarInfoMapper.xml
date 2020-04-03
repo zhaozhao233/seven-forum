@@ -14,6 +14,7 @@
         <result property="createTime" column="createTime"/>
     </resultMap>
 
+    <!--这个不是我写了，后面可以根据情况删除-->
     <!--热门贴吧（前100中的8个）-->
     <select id="listPopularPostBarIds" resultType="int">
         SELECT post_bar_id FROM post_bar_info WHERE post_bar_status = 1 ORDER BY user_count DESC LIMIT 100
@@ -65,17 +66,9 @@
         AND catalogue_id IN
         (SELECT catalogue_id FROM partition_catalogue WHERE partition_id=#{param1})
     </select>
+
+
     <!--fengexian-->
-    <!--根据关键字模糊搜索贴吧-->
-    <select id="listPostBarsByName" resultType="string">
-        SELECT * FROM post_bar_info
-        WHERE post_bar_name LIKE CONCAT(CONCAT('%', #{arg0}), '%')
-        AND post_bar_status = 1
-    </select>
-
-
-
-
 
     <!--指定id的贴吧信息-->
     <select id="getPostBarById" resultType="postBarInfoEntity">

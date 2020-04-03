@@ -1,0 +1,12 @@
+aliyun:
+  oss:
+    endpoint:
+      sts.cn-shanghai.aliyuncs.com
+    accessKeyId:
+      LTAI4FiPJ4wCkPQ9MU7pH64L
+    accessKeySecret:
+      uaqftllFpumeIIUCCsODbYQpnGtGVC
+    roleArn:
+      acs:ram::1071176295056484:role/sevenforum
+    roleSessionName:
+      session-name

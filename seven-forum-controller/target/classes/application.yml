@@ -7,7 +7,7 @@ server:
 spring:
   # 导入其他配置文件
   profiles:
-    include: dao
+    include: util, dao
   servlet:
     multipart:
       enabled: true
