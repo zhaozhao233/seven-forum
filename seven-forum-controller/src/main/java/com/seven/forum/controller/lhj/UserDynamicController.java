@@ -1,5 +1,6 @@
 package com.seven.forum.controller.lhj;
 
+import com.github.pagehelper.PageInfo;
 import com.seven.forum.entity.lhj.UserCommentEntity;
 import com.seven.forum.entity.lhj.UserDynamicEntity;
 import com.seven.forum.service.lhj.UserDynamicService;
@@ -37,18 +38,17 @@ public class UserDynamicController {
     @ResponseBody
     public ResponseVO listDynamic(Integer pageNum,Integer pageSize,Integer userId){
         List<UserDynamicEntity> userDynamicEntities = dynamicService.listFollowUserDynamic(pageNum, pageSize, userId);
-        ResponseVO vo = new ResponseVO();
-        vo.setData(userDynamicEntities);
-        return vo;
+        PageInfo<UserDynamicEntity> pageInfo = new PageInfo<>(userDynamicEntities,3);
+        return  new ResponseVO(200,"ok",pageInfo);
     }
 
     @RequestMapping("/listComment")
+    @ResponseBody
     //显示该动态下的所有评论
     public ResponseVO listComment(Integer pageNum,Integer pageSize,Integer dynamicId){
         List<UserCommentEntity> userCommentEntities = dynamicService.listCommentByDynamicId(pageNum,pageSize,dynamicId);
-        ResponseVO responseVO = new ResponseVO();
-        responseVO.setData(userCommentEntities);
-        return responseVO;
+        PageInfo<UserCommentEntity> pageInfo = new PageInfo<>(userCommentEntities,3);
+        return  new ResponseVO(200,"ok",pageInfo);
     }
 
     @RequestMapping("/commentDynamic")
@@ -126,13 +126,11 @@ public class UserDynamicController {
         }else {
             //取消点赞
             if (status==1){
-                System.out.println("取消-----");
                 dynamicService.cancelCommentLikeAndReduceLikeCount(likeObjId,userId,commentId);
                 return "cancel";
             }
             //取消后又点赞
             if (status==0){
-                System.out.println("取消后----");
                 dynamicService.commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(likeObjId,userId,commentId);
                 return "after cancel";
             }

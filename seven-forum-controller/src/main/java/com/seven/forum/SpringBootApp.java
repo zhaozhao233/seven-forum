@@ -1,23 +1,14 @@
 package com.seven.forum;
 
-import com.seven.forum.dao.hzw.NfMessageDao;
-import com.seven.forum.entity.hzw.NfUserEntity;
-import com.seven.forum.entity.hzw.chatting.BetweenUserChatting;
-import com.seven.forum.entity.hzw.message.MessageTypeEntity;
-import com.seven.forum.entity.hzw.message.NfMessageEntity;
-import com.seven.forum.entity.hzw.message.UserAllMessageEntity;
-import com.seven.forum.entity.hzw.message.UserMessageTypeEntity;
-import com.seven.forum.service.hzw.ChattingService;
-import com.seven.forum.service.hzw.NfMessageService;
-import com.seven.forum.service.hzw.NfUserService;
+import com.seven.forum.entity.lhj.UserDynamicEntity;
+import com.seven.forum.entity.zyl.PostBarPartitionEntity;
+import com.seven.forum.service.lhj.UserDynamicService;
+import com.seven.forum.service.zyl.PostBarPartitionService;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -27,11 +18,15 @@ public class SpringBootApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext run =
                 SpringApplication.run(SpringBootApp.class, args);
-
-        NfMessageService service1 = run.getBean(NfMessageService.class);
-        ChattingService service2 = run.getBean(ChattingService.class);
-
-
-
+//        PostBarPartitionService bean = run.getBean(PostBarPartitionService.class, run);
+//        List<PostBarPartitionEntity> postBarPartitionEntities = bean.listAllPartitionsAndCatalogues();
+//        for (PostBarPartitionEntity postBarPartitionEntity : postBarPartitionEntities) {
+//            System.out.println(postBarPartitionEntity);
+//        }
+        UserDynamicService bean = run.getBean(UserDynamicService.class, run);
+        List<UserDynamicEntity> userDynamicEntities = bean.listFollowUserDynamic(1,2,123);
+        for (UserDynamicEntity userDynamicEntity : userDynamicEntities) {
+            System.out.println("userDynamicEntity = " + userDynamicEntity);
+        }
     }
 }

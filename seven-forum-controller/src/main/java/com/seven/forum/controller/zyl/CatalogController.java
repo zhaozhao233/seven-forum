@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @CrossOrigin
 @Slf4j
 public class CatalogController {
-
     @Autowired
     private PostBarPartitionService postBarPartitionService;
 
