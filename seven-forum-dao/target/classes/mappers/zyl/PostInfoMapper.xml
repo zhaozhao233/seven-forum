@@ -4,38 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seven.forum.dao.zyl.PostInfoDAO">
 
-
-    <!--<select id="listAllPostInfos" resultType="postInfoEntity">-->
-    <!--SELECT post_id, post_title, post_content, A.user_id, user_name,wonderful_post,visit_count,create_time,top_post-->
-    <!--FROM post_info A, nf_user B-->
-    <!--WHERE post_status = 1-->
-    <!--AND post_bar_id = #{arg0}-->
-    <!--AND A.user_id = B.user_id-->
-    <!--ORDER BY top_post DESC, create_time-->
-    <!--</select>-->
-
-    <!--<resultMap id="postBarInfo" type="">-->
-    <!--<result property="postBarName" column="post_bar_name"/>-->
-    <!--<result property="postBarExplain" column="post_bar_explain"/>-->
-    <!--<result property="postBarLogoUrl" column="post_bar_logo_url"/>-->
-    <!--<result property="postCount" column="post_count"/>-->
-    <!--<result property="userCount" column="user_count"/>-->
-    <!--</resultMap>-->
-
     <resultMap id="postInfo" type="postInfoEntity">
         <id property="postId" column="post_id"/>
         <result property="userName" column="user_name"/>
         <result property="postTitle" column="post_title"/>
         <result property="postContent" column="post_content"/>
+        <result property="userId" column="user_id"/>
         <result property="topPost" column="top_post"/>
         <result property="wonderfulPost" column="wonderful_post"/>
         <result property="createTime" column="create_time"/>
         <result property="replyCount" column="num"/>
     </resultMap>
 
-    <!--某个贴吧所有界面的帖子，通过置顶降序排序-->
+    <!--某个贴吧所有界面的帖子，通过置顶降序,时间升序排序-->
     <select id="listAllPostInfos" resultMap="postInfo">
-        select COUNT(*) num,post_info.post_id,post_title, post_content, top_post, wonderful_post, user_name, post_info.create_time
+        select COUNT(*) num,post_info.post_id,post_title, post_content, post_info.user_id, top_post, wonderful_post, user_name, post_info.create_time
         FROM post_info
         LEFT JOIN reply_post_info
         ON post_info.post_id = reply_post_info.post_id
@@ -77,37 +60,12 @@
         AND post_bar_id = #{arg0}
     </select>
 
-    <!--&lt;!&ndash;查询帖子&ndash;&gt;-->
-
-    <!--<select id="getPostInfoById" resultType="postInfoEntity">-->
-    <!--SELECT post_id, post_bar_id, post_title, post_content,-->
-    <!--user_id, top_post, wonderful_post, audit, visit_count,create_time -->
-    <!--FROM post_info-->
-    <!--WHERE post_id = #{arg0} AND post_status = 1-->
-    <!--</select>-->
-
-    <!--&lt;!&ndash;查询一个帖子有多少回帖&ndash;&gt;-->
-    <!--<select id="countPostReplies" resultType="long">-->
-    <!--SELECT COUNT(*)-->
-    <!--FROM reply_post_info-->
-    <!--WHERE post_id = #{arg0}-->
-    <!--AND reply_status = 1-->
-    <!--</select>-->
-
-    <!--<select id="listPostRepliesByPostId" resultType="replyPostInfoEntity">-->
-    <!--SELECT reply_post_id, post_id, A.user_id, reply_post_content,-->
-    <!--create_time, user_name, user_img_url-->
-    <!--FROM reply_post_info A, nf_user B-->
-    <!--WHERE post_id = #{arg0}-->
-    <!--AND reply_status = 1-->
-    <!--ORDER top_reply_post DESC-->
-    <!--</select>-->
-
-    <!--&lt;!&ndash;分割线、、、、、、、、、、、、、、、、、&ndash;&gt;-->
-    <!--<insert id="insertPostInfo">-->
-    <!--INSERT INTO post_info(post_bar_id, post_title, post_content, user_id)-->
-    <!--VALUES (#{arg0}, #{arg1}, #{arg2}, #{arg3})-->
-    <!--</insert>-->
+    <!--查询帖子的标题和作者-->
+    <select id="getPostInfoById" resultType="postInfoEntity">
+    SELECT post_title, user_id,
+    FROM post_info
+    WHERE post_id = #{arg0}
+    </select>
 
     <!--根据帖子id查询贴吧信息显示在头部-->
     <select id="getPostBarByPostId" resultType="postBarInfoEntity">
@@ -174,17 +132,6 @@
         ) C LEFT JOIN nf_user D on C.reply_user_id = D.user_id ORDER BY C.reply_time
     </select>
 
-    <!--主要目的：只看楼主功能-->
-    <!--根据帖子id查出作者id，然后再通过作者id查出所有该帖子id下的回帖-->
-    <!--然后还是调用listRepliesInReplyPostByPostId语句配合查询-->
-    <!--<select id="listJustLandlordReplyPostIdsByPostId" resultType="long">-->
-        <!--SELECT  reply_post_id FROM reply_post_info-->
-        <!--WHERE post_id=#{arg0}-->
-        <!--AND user_id = (SELECT user_id FROM post_info WHERE post_id = #{arg0})-->
-        <!--AND reply_status = 1-->
-        <!--ORDER BY create_time-->
-    <!--</select>-->
-
     <!--通过帖子id，查出楼主的回帖和回复回帖的数量-->
     <select id="listJustLandlordPostsAndCountReply" resultMap="listPostsAndCountReply">
         SELECT @i:=@i+1 storey, COUNT(*) num,A.reply_post_id,A.user_id,A.reply_post_content,A.create_time,
@@ -197,6 +144,49 @@
         GROUP BY A.reply_post_id
         ORDER BY A.create_time
     </select>
+
+    <!--收藏列表-->
+    <select id="listAllCollections" resultType="collectGroup">
+      SELECT A.collect_group_id, A.group_name,
+      (SELECT COUNT(*) FROM user_collect B WHERE A.collect_group_id = B.collect_group_id) total_num
+      FROM collect_group A
+      WHERE A.user_id = #{arg0}
+    </select>
+
+    <!--查看是否关注贴吧-->
+    <select id="isFollowPostBar" resultType="int">
+        SELECT 1 FROM user_attention_post_bar
+        WHERE user_id = #{param1} AND post_bar_id = #{param2}
+        LIMIT 1
+    </select>
+
+    <!--是否收藏了帖子-->
+    <select id="isCollectPost" resultType="int">
+        SELECT 1 FROM user_collect
+        WHERE user_id = #{param1} AND collect_obj_id = #{param2}
+        LIMIT 1
+    </select>
+
+    <!--关注贴吧-->
+    <insert id="insertFollowPostBar">
+        INSERT user_attention_post_bar(user_id, post_bar_id)
+        VALUES (#{param1}, #{param2})
+    </insert>
+
+    <!--收藏帖子-->
+    <insert id="insertCollectPost">
+        <selectKey resultType="long" keyProperty="collectId" order="AFTER">
+            SELECT last_insert_id()
+        </selectKey>
+        INSERT INTO user_collect(user_id, collect_obj_id, collect_group_id)
+        VALUES (#{userId}, #{collectObjId}, #{collectGroupId})
+    </insert>
+
+    <!--创建收藏夹-->
+    <insert id="insertFavorites">
+        INSERT INTO collect_group(group_name, user_id, status)
+        VALUES (#{groupName}, #{userId}, #{status})
+    </insert>
 
     <!--用户的回复-->
     <insert id="insertReply">
@@ -215,7 +205,33 @@
         <selectKey resultType="long" order="AFTER" keyProperty="postId">
             select last_insert_id()
         </selectKey>
-        INSERT INTO post_info(post_bar_id, post_title, post_content, user_id, top_post, wonderful_post, audit, visit_count, post_status)
+        INSERT INTO post_info(post_bar_id, post_title, post_content, user_id, top_post, wonderful_post, audit,
+        visit_count, post_status)
         VALUES (#{postBarId}, #{postTitle}, #{postContent}, #{userId}, 0, 0, 0, 0, 1)
     </insert>
+
+    <!--在收藏框里取消收藏-->
+    <delete id="deleteCollectionInCollections">
+        DELETE FROM user_collect WHERE collect_id = #{arg0}
+    </delete>
+
+    <delete id="deleteCollectionInPostInfo">
+        DELETE FROM user_collect WHERE user_id = #{arg0} AND collect_obj_id = #{arg1}
+    </delete>
+
+    <!--删除收藏夹-->
+    <delete id="deleteFavorites">
+        DELETE FROM collect_group WHERE collect_group_id = #{arg0}
+    </delete>
+
+    <!--删除收藏夹之前先删除其下的所有所藏-->
+    <delete id="deleteCollections">
+        DELETE FROM user_collect WHERE collect_group_id = #{arg0}
+    </delete>
+
+    <!--取消关注贴吧-->
+    <delete id="deleteFollowPostBar">
+        DELETE FROM user_attention_post_bar
+        WHERE user_id = #{param1} AND post_bar_id = #{param2}
+    </delete>
 </mapper>

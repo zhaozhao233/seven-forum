@@ -1,8 +1,6 @@
 package com.seven.forum.controller.zyl;
 
-import com.seven.forum.entity.zyl.PostInfoEntity;
-import com.seven.forum.entity.zyl.ReplyInfoEntity;
-import com.seven.forum.entity.zyl.ReplyPostInfoEntity;
+import com.seven.forum.entity.zyl.*;
 import com.seven.forum.service.zyl.PostInfoService;
 import com.seven.forum.vo.ResponseVO;
 import lombok.extern.slf4j.Slf4j;
@@ -106,5 +104,125 @@ public class PostInfoController {
         log.info("用户id[" + postInfoEntity.getUserId() + "]在贴吧id[" + postInfoEntity.getPostBarId() + "]发帖");
         Long postId = postInfoService.insertPost(postInfoEntity);
         return new ResponseVO(200, postId.toString());
+    }
+
+    @GetMapping("/postInfos")
+    public ResponseVO getPostTitleAndPostUserIdByPostId(Long postId) {
+        log.info("查询了贴吧id[" + postId + "]的标题和作者id");
+        return new ResponseVO(200, "success", postInfoService.getPostInfoById(postId));
+    }
+
+    /**
+     * 是否收藏了该帖子
+     * @param userId 用户id
+     * @param postId 帖子id
+     * @return
+     */
+    @GetMapping("/is/collections")
+    public ResponseVO isCollection(Long userId, Long postId) {
+        Integer isCollect = postInfoService.isCollectPost(userId, postId);
+        return new ResponseVO(200, isCollect + "");
+    }
+
+    /**
+     * 在帖子界面取消收藏
+     * @param userId
+     * @param postId
+     * @return
+     */
+    @DeleteMapping("/postInfos/collections")
+    public ResponseVO cancelCollectPost(Long userId, Long postId) {
+        postInfoService.deleteCollectionInPostInfo(userId, postId);
+        return new ResponseVO(200, "success");
+    }
+
+    /**
+     * 在收藏夹去取消收藏
+     * @param collectId 收藏id
+     * @return
+     */
+    @DeleteMapping("/favorites/collections")
+    public ResponseVO deleteCollectPost(Long collectId) {
+        postInfoService.deleteCollectionInCollections(collectId);
+        return new ResponseVO(200, "success");
+    }
+
+    /**
+     * 列出所有收藏夹
+     * @param userId 用户id
+     * @return
+     */
+    @GetMapping("/collections")
+    public ResponseVO listAllCollections(Long userId) {
+        return new ResponseVO(200, "success", postInfoService.listAllCollections(userId));
+    }
+
+    /**
+     * 是否关注贴吧
+     * @param userId 用户id
+     * @param postBarId 贴吧id
+     * @return
+     */
+    @GetMapping("/is/postBars")
+    public ResponseVO isFollowPostBar(Long userId, Long postBarId) {
+        Integer isFollowPostBar = postInfoService.isFollowPostBar(userId, postBarId);
+        return new ResponseVO(200, isFollowPostBar + "");
+    }
+
+    /**
+     * 关注贴吧
+     * @param userId 用户id
+     * @param postBarId 贴吧id
+     * @return
+     */
+    @PostMapping("/postBars")
+    public ResponseVO followPostBar(Long userId, Long postBarId) {
+        postInfoService.insertFollowPostBar(userId, postBarId);
+        return new ResponseVO(200, "success");
+    }
+
+    /**
+     * 收藏帖子
+     * @param userCollect 收藏信息
+     * @return 收藏id，后面可用于在收藏夹中取消收藏
+     */
+    @PostMapping("/collections/postInfos")
+    public ResponseVO collectPost(@RequestBody UserCollect userCollect) {
+        Long collectId = postInfoService.insertCollectPost(userCollect);
+        return new ResponseVO(200, collectId.toString());
+    }
+
+    /**
+     * 创建收藏夹
+     * @param collectGroup 收藏夹信息
+     * @return
+     */
+    @PostMapping("/collections")
+    public ResponseVO createFavorites(@RequestBody CollectGroup collectGroup) {
+        postInfoService.insertFavorites(collectGroup);
+        return new ResponseVO(200, "success");
+    }
+
+    /**
+     * 删除收藏夹
+     * @param collectGroupId 收藏夹id
+     * @return
+     */
+    @DeleteMapping("/collections")
+    public ResponseVO deleteFavorites(Long collectGroupId) {
+        postInfoService.deleteFavorites(collectGroupId);
+        return new ResponseVO(200, "success");
+    }
+
+    /**
+     * 取消关注贴吧
+     * @param userId 用户id
+     * @param postBarId 贴吧id
+     * @return
+     */
+    @DeleteMapping("/follows/postBars")
+    public ResponseVO deleteFollowPostBar(Long userId, Long postBarId) {
+        postInfoService.deleteFollowPostBar(userId, postBarId);
+        return new ResponseVO(200, "success");
     }
 }

@@ -59,6 +59,16 @@ public class PostInfoServiceImpl implements PostInfoService {
     }
 
     /**
+     * 主要是获取帖子的标题和作者id
+     * @param postId 帖子id
+     * @return
+     */
+    @Override
+    public PostInfoEntity getPostInfoById(Long postId) {
+        return postInfoDAO.getPostInfoById(postId);
+    }
+
+    /**
      * 通过帖子id获取其详细信息
      * @param postId 帖子id
      * @return
@@ -173,16 +183,106 @@ public class PostInfoServiceImpl implements PostInfoService {
     }
 
     /**
-     * 只获取回复楼主的回复
-     * @param postId
+     * 列出所有收藏夹
+     * @param userId 用户id
      * @return
      */
-//    @Override
-//    public List<ReplyInfoEntity> listJustReplyInfosForLandlord(Long postId) {
-//        List<Long> landlordReplyPostIds = postInfoDAO.listJustLandlordReplyPostIdsByPostId(postId);
-//        List<ReplyInfoEntity> replyInfoEntities = postInfoDAO.listRepliesInReplyPostByPostId(landlordReplyPostIds);
-//        return replyInfoEntities;
-//    };
+    @Override
+    public List<CollectGroup> listAllCollections(Long userId) {
+        return postInfoDAO.listAllCollections(userId);
+    }
 
+    /**
+     * 是否关注贴把
+     * @param userId    用户id
+     * @param postBarId 贴吧id
+     * @return
+     */
+    @Override
+    public Integer isFollowPostBar(Long userId, Long postBarId) {
+        return postInfoDAO.isFollowPostBar(userId, postBarId);
+    }
+
+    /**
+     * 是否收藏帖子
+     * @param userId       用户id
+     * @param collectObjId 帖子id
+     * @return
+     */
+    @Override
+    public Integer isCollectPost(Long userId, Long collectObjId) {
+        return postInfoDAO.isCollectPost(userId, collectObjId);
+    }
+
+    /**
+     * 关注贴吧
+     * @param userId    用户id
+     * @param postBarId 帖子id
+     */
+    @Override
+    public void insertFollowPostBar(Long userId, Long postBarId) {
+        postInfoDAO.insertFollowPostBar(userId, postBarId);
+    }
+
+
+    /**
+     * 添加收藏信息
+     * @param userCollect 收藏信息
+     * @return 收藏id，自增长生成
+     */
+    @Override
+    public Long insertCollectPost(UserCollect userCollect) {
+        postInfoDAO.insertCollectPost(userCollect);
+        return userCollect.getCollectId();
+    }
+
+    /**
+     * 添加收藏夹
+     * @param collectGroup 收藏夹信息
+     */
+    @Override
+    public void insertFavorites(CollectGroup collectGroup) {
+        postInfoDAO.insertFavorites(collectGroup);
+    }
+
+    /**
+     * 在弹出的收藏夹里取消收藏
+     * @param collectId 收藏id
+     */
+    @Override
+    public void deleteCollectionInCollections(Long collectId) {
+        postInfoDAO.deleteCollectionInCollections(collectId);
+    }
+
+    /**
+     * 在帖子界面取消收藏
+     * @param userId 用户id
+     * @param collect0bjId 相当于帖子id
+     */
+    @Override
+    public void deleteCollectionInPostInfo(Long userId, Long collect0bjId) {
+        postInfoDAO.deleteCollectionInPostInfo(userId, collect0bjId);
+    }
+
+    /**
+     * 删除收藏夹，先删除改收藏夹下的所有收藏再删除收藏夹
+     * @param collectGroupId 收藏夹id
+     */
+    @Transactional(rollbackFor = RuntimeException.class)
+    @Override
+    public void deleteFavorites(Long collectGroupId) {
+        postInfoDAO.deleteCollections(collectGroupId);
+        postInfoDAO.deleteFavorites(collectGroupId);
+    }
+
+    /**
+     * 取消关注贴吧
+     * @param userId 用户id
+     * @param postBarId 贴吧id
+     */
+    @Override
+    public void deleteFollowPostBar(Long userId, Long postBarId) {
+        postInfoDAO.deleteFollowPostBar(userId, postBarId);
+    }
 
 }

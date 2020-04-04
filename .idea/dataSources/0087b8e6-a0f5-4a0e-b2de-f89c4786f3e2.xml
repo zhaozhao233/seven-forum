@@ -2209,7 +2209,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="432" parent="262" name="collect_obj_staatus">
+    <column id="432" parent="262" name="collect_obj_status">
       <Position>4</Position>
       <Comment>收藏对象类型</Comment>
       <DataType>tinyint(4)|0s</DataType>

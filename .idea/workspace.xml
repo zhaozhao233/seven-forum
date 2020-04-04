@@ -2,36 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab1d77e5-4bc2-4642-b1bd-0bdd7c2c146f" name="Default Changelist" comment="1.HomePageController中的查询八个热门&#10;2.CatalogController中的列出所有分区和目录">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/vo/ResponseVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/vo/ResponseVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/src/test/java/com/seven/forum/test/ElasticsearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/src/test/java/com/seven/forum/test/ElasticsearchTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/SpringBootApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/SpringBootApp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/controller/zyl/PostInfoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/controller/zyl/PostInfoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/vo/ResponseVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/vo/ResponseVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-controller/target/test-classes/com/seven/forum/test/ElasticsearchTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-controller/target/test-classes/com/seven/forum/test/ElasticsearchTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostBarInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostBarInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-dao/target/classes/com/seven/forum/dao/zyl/PostInfoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/target/classes/com/seven/forum/dao/zyl/PostInfoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-dao/target/classes/com/seven/forum/dao/zyl/PostInfoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-dao/target/classes/mappers/zyl/PostBarInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/target/classes/mappers/zyl/PostBarInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-dao/target/classes/mappers/zyl/PostInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-dao/target/classes/mappers/zyl/PostInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/ReplyInfoEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/ReplyInfoEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-entity/target/classes/com/seven/forum/entity/zyl/ReplyInfoEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-entity/target/classes/com/seven/forum/entity/zyl/ReplyInfoEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/SearchServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/PostInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/PostInfoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/impl/SearchServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-service/target/classes/com/seven/forum/service/zyl/impl/SearchServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seven-forum-util/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seven-forum-util/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/seven-forum-controller/target/" />
     <ignored path="$PROJECT_DIR$/seven-forum-service/target/" />
@@ -75,6 +57,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="seven_forum: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="seven_forum@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="seven_forum: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="user_collect: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -83,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
+            <state relative-caret-position="3690">
+              <caret line="126" column="9" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="109" column="1" lean-forward="true" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
+            <state relative-caret-position="178">
+              <caret line="212" column="45" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -105,15 +94,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1296#1297#0" expanded="true" />
-                <element signature="e#1360#1361#0" expanded="true" />
-              </folding>
+        <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/collect_group">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/user_attention_post_bar">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -121,30 +114,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="3810">
+              <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/controller/zyl/PostInfoController.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="77" column="32" selection-start-line="77" selection-start-column="32" selection-end-line="77" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seven-forum-controller/target/classes/com/seven/forum/controller/zyl/PostBarController.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1195">
-              <folding>
-                <element signature="e#0#2505#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,17 +126,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="215" column="35" lean-forward="true" selection-start-line="215" selection-start-column="35" selection-end-line="215" selection-end-column="35" />
+            <state relative-caret-position="6810">
+              <caret line="227" column="4" selection-start-line="227" selection-start-column="4" selection-end-line="227" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_6.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="169" column="43" selection-start-line="169" selection-start-column="43" selection-end-line="169" selection-end-column="43" />
+            <state relative-caret-position="1860">
+              <caret line="62" selection-start-line="62" selection-end-line="64" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/user_collect">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/UserCollect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -172,19 +163,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostBarController.java">
+        <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="193" selection-start-line="193" selection-end-line="193" />
+            <state relative-caret-position="127">
+              <caret line="273" column="28" selection-start-line="273" selection-start-column="28" selection-end-line="273" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5138#5139#0" expanded="true" />
+                <element signature="e#5199#5200#0" expanded="true" />
+                <element signature="e#5881#5882#0" expanded="true" />
+                <element signature="e#5947#5948#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -203,7 +192,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>baseP</find>
       <find>post_bar_id</find>
       <find>精</find>
       <find>3</find>
@@ -216,6 +204,24 @@
       <find>@GetMapping(&quot;/test&quot;)</find>
       <find>listPostsAndCountReply</find>
       <find>页码</find>
+      <find>postBars/posts</find>
+      <find>staa</find>
+      <find>deleteCollection</find>
+      <find>@PostMapping(&quot;postBars&quot;)</find>
+      <find>@PostMapping(&quot;/collections/postInfos&quot;)</find>
+      <find>@PostMapping(&quot;/collections&quot;)</find>
+      <find>@DeleteMapping(&quot;/collections&quot;)</find>
+      <find>@GetMapping(&quot;/collections&quot;)</find>
+      <find>取消</find>
+      <find>@DeleteMapping(&quot;/follows/postBars&quot;)</find>
+      <find>关注</find>
+      <find>user_attention_post_bar</find>
+      <find>postBars</find>
+      <find>is/postBars</find>
+      <find>收藏</find>
+      <find>列出</find>
+      <find>列</find>
+      <find>删除</find>
     </findStrings>
     <replaceStrings>
       <replace>Long</replace>
@@ -227,8 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_3.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_4.sql" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostBarController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_5.sql" />
         <option value="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/A.java" />
@@ -257,8 +261,6 @@
         <option value="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoRepository.java" />
         <option value="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostBarInfoMapper.xml" />
         <option value="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/SearchServiceImpl.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_6.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/vo/ResponseVO.java" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/vo/ResultCode.java" />
         <option value="$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/ReplyInfoEntity.java" />
@@ -272,12 +274,16 @@
         <option value="$PROJECT_DIR$/seven-forum-util/pom.xml" />
         <option value="$PROJECT_DIR$/seven-forum-util/src/main/java/com/seven/forum/util/AliyunOssUtils.java" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/AliyunController.java" />
-        <option value="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml" />
-        <option value="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java" />
+        <option value="$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/UserCollect.java" />
+        <option value="$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/CollectGroup.java" />
+        <option value="$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java" />
         <option value="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java" />
         <option value="$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java" />
         <option value="$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_6.sql" />
+        <option value="$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
       </list>
     </option>
   </component>
@@ -369,7 +375,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -382,6 +388,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -556,99 +564,6 @@
             <path>
               <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
               <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="zyl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="seven" type="462c0819:PsiDirectoryNode" />
-              <item name="forum" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
-              <item name="seven-forum-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
               <item name="seven-forum-dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -752,6 +667,87 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="mappers" type="462c0819:PsiDirectoryNode" />
+              <item name="zyl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="seven" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="seven" type="462c0819:PsiDirectoryNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="seven" type="462c0819:PsiDirectoryNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="seven-forum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="seven-forum" type="462c0819:PsiDirectoryNode" />
+              <item name="seven-forum-entity" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="seven" type="462c0819:PsiDirectoryNode" />
+              <item name="forum" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
               <item name="zyl" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -1014,13 +1010,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="MyBatisLogPluginindexNum" value="1126" />
+    <property name="MyBatisLogPluginindexNum" value="1009" />
     <property name="MyBatisLogPluginparameters" value="Parameters:" />
     <property name="MyBatisLogPluginpreparing" value="Preparing:" />
     <property name="MyBatisLogPluginrunning" value="true" />
@@ -1212,7 +1206,9 @@
       <workItem from="1585699320296" duration="284000" />
       <workItem from="1585716081716" duration="15788000" />
       <workItem from="1585776411905" duration="24828000" />
-      <workItem from="1585867254622" duration="7815000" />
+      <workItem from="1585867254622" duration="28208000" />
+      <workItem from="1585970061531" duration="7061000" />
+      <workItem from="1585988433086" duration="1173000" />
     </task>
     <task id="LOCAL-00001" summary="1.HomePageController中的查询八个热门&#10;2.CatalogController中的列出所有分区和目录">
       <created>1583623138314</created>
@@ -1257,7 +1253,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307225000" />
+    <option name="totallyTimeSpent" value="335852000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1269,10 +1265,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.37291983" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.022692889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1282,8 +1278,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30327868" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.124590166" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30163935" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43442622" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
@@ -1295,8 +1291,8 @@
       <window_info anchor="bottom" id="Spring" order="12" weight="0.3295082" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.3295082" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.3295082" />
-      <window_info anchor="bottom" id="MyBatis Log" order="15" weight="0.352459" />
-      <window_info anchor="bottom" id="Database Console" order="16" weight="0.58360654" />
+      <window_info anchor="bottom" id="MyBatis Log" order="15" weight="0.8442623" />
+      <window_info anchor="bottom" id="Database Console" order="16" weight="0.4262295" />
       <window_info anchor="bottom" id="Problems" order="17" weight="0.3295082" />
       <window_info anchor="bottom" id="Duplicate detector" order="18" weight="0.3295082" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -1307,7 +1303,7 @@
       <window_info anchor="right" id="Maven" order="5" weight="0.022692889" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" visible="true" weight="0.078668684" />
+      <window_info anchor="right" id="Database" order="8" visible="true" weight="0.25416037" />
       <window_info anchor="right" id="Bean Validation" order="9" />
     </layout>
   </component>
@@ -1323,45 +1319,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/UtilController.java" />
-    <entry file="file://$PROJECT_DIR$/seven-forum-util/src/main/java/com/seven/forum/util/PictureUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/database/zyl/tables.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14610">
-          <caret line="487" column="38" selection-start-line="485" selection-end-line="487" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/ReplyPostInfoEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/PostInfoEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-257">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" lean-forward="true" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostBarInfoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1369,22 +1326,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostBarInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/collect_group.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_6.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="55" column="92" selection-start-line="53" selection-start-column="75" selection-end-line="55" selection-end-column="92" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/SearchServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1450,13 +1393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22">
           <caret line="15" selection-start-line="15" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="29" column="20" selection-end-line="74" />
         </state>
       </provider>
     </entry>
@@ -1605,34 +1541,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="64" column="8" selection-start-line="64" selection-start-column="8" selection-end-line="64" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="215" column="35" lean-forward="true" selection-start-line="215" selection-start-column="35" selection-end-line="215" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="193" selection-start-line="193" selection-end-line="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostBarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1648,7 +1560,7 @@
     <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1296#1297#0" expanded="true" />
@@ -1664,20 +1576,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java">
+    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostBarController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state relative-caret-position="250">
+          <caret line="32" column="116" selection-start-line="32" selection-start-column="116" selection-end-line="32" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.3.RELEASE/spring-web-5.2.3.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="106" column="39" selection-start-line="106" selection-start-column="39" selection-end-line="106" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostBarInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/CollectGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java">
+    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/java/com/seven/forum/dao/zyl/PostInfoDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="109" column="1" lean-forward="true" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
+        <state relative-caret-position="3690">
+          <caret line="126" column="9" selection-start-line="126" selection-start-column="9" selection-end-line="126" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/collect_group">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/user_attention_post_bar">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/PostInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3810">
+          <caret line="131" column="9" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-dao/src/main/resources/mappers/zyl/PostInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6810">
+          <caret line="227" column="4" selection-start-line="227" selection-start-column="4" selection-end-line="227" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/console_6.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="62" selection-start-line="62" selection-end-line="64" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://0087b8e6-a0f5-4a0e-b2de-f89c4786f3e2/schema/seven_forum/table/user_collect">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-entity/src/main/java/com/seven/forum/entity/zyl/UserCollect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1686,8 +1681,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/seven-forum-service/src/main/java/com/seven/forum/service/zyl/impl/PostInfoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="169" column="43" selection-start-line="169" selection-start-column="43" selection-end-line="169" selection-end-column="43" />
+        <state relative-caret-position="127">
+          <caret line="273" column="28" selection-start-line="273" selection-start-column="28" selection-end-line="273" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5138#5139#0" expanded="true" />
+            <element signature="e#5199#5200#0" expanded="true" />
+            <element signature="e#5881#5882#0" expanded="true" />
+            <element signature="e#5947#5948#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/zyl/PostInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="212" column="45" selection-start-line="212" selection-start-column="45" selection-end-line="212" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
