@@ -22,9 +22,6 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/dynamic")
-@CrossOrigin(value = "http://127.0.0.1:8848",
-                methods = {RequestMethod.DELETE,RequestMethod.GET,RequestMethod.POST},
-            allowCredentials = "true")
 public class UserDynamicController {
 
     private static final String FILE_DIRECTORY = "D:\\A-learn\\A-TeamProject\\seven-forum\\seven-forum-controller\\src\\main\\resources\\static\\image";
