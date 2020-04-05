@@ -12,8 +12,19 @@ import java.util.List;
 public class PostBarPartitionServiceImpl implements PostBarPartitionService {
     @Autowired
     private PostBarPartitionDAO postBarPartitionDAO;
+
     @Override
     public List<PostBarPartitionEntity> listAllPartitionsAndCatalogues() {
         return postBarPartitionDAO.listAllPartitionsAndCatalogues();
+    }
+
+    @Override
+    public Integer isExistsPostBarPartitionByPartitionId(Long partitionId) {
+        return postBarPartitionDAO.isExistsPostBarPartitionByPartitionId(partitionId);
+    }
+
+    @Override
+    public Integer isExistsPartitionCatalogueByCatalogueId(Long catalogueId) {
+        return postBarPartitionDAO.isExistsPartitionCatalogueByCatalogueId(catalogueId);
     }
 }

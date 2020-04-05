@@ -1,8 +1,6 @@
 package com.seven.forum.service.zyl;
 
 import com.seven.forum.entity.zyl.PostBarInfoEntity;
-import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -20,6 +18,6 @@ public interface PostBarInfoService {
 
     PostBarInfoEntity getPostBarById(Long postBarId);
 
-    //    -----------------
+    Integer isExistsPostBar(Long postBarId);
 
 }

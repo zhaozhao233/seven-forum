@@ -20,6 +20,7 @@ public class PostInfoController {
 
     /**
      * 查询帖子所属的贴吧信息
+     *
      * @param postId 帖子id
      * @return
      */
@@ -31,8 +32,9 @@ public class PostInfoController {
 
     /**
      * 分页查询帖子的回帖
-     * @param postId 帖子id
-     * @param pageNum 页码
+     *
+     * @param postId   帖子id
+     * @param pageNum  页码
      * @param pageSize 页容量
      * @return
      */
@@ -72,30 +74,31 @@ public class PostInfoController {
 
     /**
      * 添加回复
+     *
      * @param replyInfoEntity 回复信息：主要有：用户id，被回复用户id，被回复的回帖id，回复内容
      * @return
      */
     @PostMapping("/replies")
     public ResponseVO insertReply(@RequestBody ReplyInfoEntity replyInfoEntity) {
-        log.info("用户id[" + replyInfoEntity.getUserId() + "]在回帖id" + replyInfoEntity.getReplyPostId() + "]回复了用户id[" +replyInfoEntity.getReplyUserId() + "]");
+        log.info("用户id[" + replyInfoEntity.getUserId() + "]在回帖id" + replyInfoEntity.getReplyPostId() + "]回复了用户id[" + replyInfoEntity.getReplyUserId() + "]");
         postInfoService.insertReply(replyInfoEntity);
         return new ResponseVO(200, "success");
     }
 
     /**
      * 回帖
+     *
      * @param replyPostInfoEntity 回帖信息，主要有：用户id，帖子id，回帖内容
      * @return
      */
     @PostMapping("/replyPosts")
     public ResponseVO insertReplyPost(@RequestBody ReplyPostInfoEntity replyPostInfoEntity) {
-        log.info("用户id[" + replyPostInfoEntity.getUserId() + "]回复了id[" + replyPostInfoEntity.getPostId() +"]的帖子");
+        log.info("用户id[" + replyPostInfoEntity.getUserId() + "]回复了id[" + replyPostInfoEntity.getPostId() + "]的帖子");
         postInfoService.insertReplyPost(replyPostInfoEntity);
         return new ResponseVO(200, "success");
     }
 
     /**
-     *
      * @param postInfoEntity
      * @return postId：用于转页面到帖子界面
      */
@@ -114,6 +117,7 @@ public class PostInfoController {
 
     /**
      * 是否收藏了该帖子
+     *
      * @param userId 用户id
      * @param postId 帖子id
      * @return
@@ -126,6 +130,7 @@ public class PostInfoController {
 
     /**
      * 在帖子界面取消收藏
+     *
      * @param userId
      * @param postId
      * @return
@@ -138,6 +143,7 @@ public class PostInfoController {
 
     /**
      * 在收藏夹去取消收藏
+     *
      * @param collectId 收藏id
      * @return
      */
@@ -149,6 +155,7 @@ public class PostInfoController {
 
     /**
      * 列出所有收藏夹
+     *
      * @param userId 用户id
      * @return
      */
@@ -159,7 +166,8 @@ public class PostInfoController {
 
     /**
      * 是否关注贴吧
-     * @param userId 用户id
+     *
+     * @param userId    用户id
      * @param postBarId 贴吧id
      * @return
      */
@@ -171,7 +179,8 @@ public class PostInfoController {
 
     /**
      * 关注贴吧
-     * @param userId 用户id
+     *
+     * @param userId    用户id
      * @param postBarId 贴吧id
      * @return
      */
@@ -183,6 +192,7 @@ public class PostInfoController {
 
     /**
      * 收藏帖子
+     *
      * @param userCollect 收藏信息
      * @return 收藏id，后面可用于在收藏夹中取消收藏
      */
@@ -194,6 +204,7 @@ public class PostInfoController {
 
     /**
      * 创建收藏夹
+     *
      * @param collectGroup 收藏夹信息
      * @return
      */
@@ -205,6 +216,7 @@ public class PostInfoController {
 
     /**
      * 删除收藏夹
+     *
      * @param collectGroupId 收藏夹id
      * @return
      */
@@ -216,7 +228,8 @@ public class PostInfoController {
 
     /**
      * 取消关注贴吧
-     * @param userId 用户id
+     *
+     * @param userId    用户id
      * @param postBarId 贴吧id
      * @return
      */
@@ -224,5 +237,23 @@ public class PostInfoController {
     public ResponseVO deleteFollowPostBar(Long userId, Long postBarId) {
         postInfoService.deleteFollowPostBar(userId, postBarId);
         return new ResponseVO(200, "success");
+    }
+
+    @PutMapping("/replies")
+    public ResponseVO updateReplyStatusByReplyId(Long replyId) {
+        postInfoService.updateReplyStatusByReplyId(replyId);
+        return new ResponseVO(200, "success");
+    }
+
+    @PutMapping("/replyPosts")
+    public ResponseVO updateReplyPostStatusByReplyPostId(Long replyPostId) {
+        postInfoService.updateReplyPostStatusByReplyPostId(replyPostId);
+        return new ResponseVO(200, "success");
+    }
+
+    @GetMapping("/is/exists")
+    public ResponseVO isExistsPost(Long postId) {
+        Integer isExists = postInfoService.isExistsPost(postId);
+        return new ResponseVO(200, isExists + "");
     }
 }

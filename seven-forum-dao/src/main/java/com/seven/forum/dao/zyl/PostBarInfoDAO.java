@@ -22,19 +22,6 @@ public interface PostBarInfoDAO {
 
     Integer countPostBarsByPartitionId(Long partitionId);
 
-    // ----
-
-
-    Integer ifExist(String postBarName);
-
-    void updateExplainById(String postBarExplain, Long postBarId);
-
-    void updateLogo(String logoUrl, Long postBarId);
-
-    void updateCatalogue(Long catalogueId, Long postBarId);
-
-    void updateUserId(Long userId, Long postBarId);
-
     void addPostCount(Long postBarId);
 
     void addUserCount(Long postBarId);
@@ -43,7 +30,5 @@ public interface PostBarInfoDAO {
 
     void reduceUserCount(Long postBarId);
 
-    void reducePostBar(Long postBarId);
-
-    void insertPostBarInfo(PostBarInfoEntity postBarInfoEntity);
+    Integer isExistsPostBar(Long postBarId);
 }

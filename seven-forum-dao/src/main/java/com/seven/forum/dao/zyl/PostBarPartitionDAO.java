@@ -7,4 +7,8 @@ import java.util.List;
 public interface PostBarPartitionDAO {
 
     List<PostBarPartitionEntity> listAllPartitionsAndCatalogues();
+
+    Integer isExistsPostBarPartitionByPartitionId(Long partitionId);
+
+    Integer isExistsPartitionCatalogueByCatalogueId(Long catalogueId);
 }

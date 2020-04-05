@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class PostBarInfoServiceImpl implements  PostBarInfoService {
+public class PostBarInfoServiceImpl implements PostBarInfoService {
     @Autowired
     private PostBarInfoDAO postBarInfoDAO;
 
@@ -47,6 +47,11 @@ public class PostBarInfoServiceImpl implements  PostBarInfoService {
     @Override
     public PostBarInfoEntity getPostBarById(Long postBarId) {
         return postBarInfoDAO.getPostBarById(postBarId);
+    }
+
+    @Override
+    public Integer isExistsPostBar(Long postBarId) {
+        return postBarInfoDAO.isExistsPostBar(postBarId);
     }
 
 }

@@ -7,14 +7,14 @@ import java.util.Date;
 @Data
 public class CollectGroup {
 
-  private Long collectGroupId;
-  private String groupName;
-  private Long userId;
-  private Date createTime;
-  private Integer status;
+    private Long collectGroupId;
+    private String groupName;
+    private Long userId;
+    private Date createTime;
+    private Integer status;
 
-  /**
-   * 收藏夹下的收藏总数
-   */
-  private Integer totalNum;
+    /**
+     * 收藏夹下的收藏总数
+     */
+    private Integer totalNum;
 }

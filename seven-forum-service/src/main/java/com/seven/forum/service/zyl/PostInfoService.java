@@ -2,7 +2,6 @@ package com.seven.forum.service.zyl;
 
 import com.seven.forum.entity.zyl.*;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -119,7 +118,8 @@ public interface PostInfoService {
 
     /**
      * 在帖子里取消收藏
-     * @param userId 用户id
+     *
+     * @param userId         用户id
      * @param collect_obj_id 相当于帖子id
      */
     void deleteCollectionInPostInfo(Long userId, Long collect_obj_id);
@@ -133,8 +133,75 @@ public interface PostInfoService {
 
     /**
      * 取消关注贴吧
-     * @param userId 用户id
+     *
+     * @param userId    用户id
      * @param postBarId 贴吧id
      */
     void deleteFollowPostBar(Long userId, Long postBarId);
+
+    /**
+     * 修改某个回复不可见
+     *
+     * @param replyId 回复id
+     */
+    void updateReplyStatusByReplyId(Long replyId);
+
+    /**
+     * 修改某个回帖下的所有回复不可见
+     *
+     * @param replyPostId 回帖id
+     */
+    void updateReplyStatusByReplyPostId(Long replyPostId);
+
+    /**
+     * 修改帖子下的所有回复不可见
+     *
+     * @param postId 帖子id
+     */
+    void updateReplyStatusByPostId(Long postId);
+
+
+    /**
+     * 修改某个回帖不可见
+     *
+     * @param replyPostId 回帖id
+     */
+    void updateReplyPostStatusByReplyPostId(Long replyPostId);
+
+    /**
+     * 修改整个帖子下的所有回帖不可见
+     *
+     * @param postId 帖子id
+     */
+    void updateReplyPostStatusByPostId(Long postId);
+
+    /**
+     * 修改帖子不可见
+     *
+     * @param postId 帖子id
+     */
+    void updatePostStatusByPostId(Long postId);
+
+    /**
+     * 修改一个回帖为不可见之前看该帖子下的1楼回帖id
+     *
+     * @param replyPostId 回帖id
+     * @return 1楼回帖id
+     */
+    Long getFirstReplyPostIdByReplyPostId(Long replyPostId);
+
+    /**
+     * 通过回帖id查出帖子id
+     *
+     * @param replyPostId 回帖id
+     * @return 帖子id
+     */
+    Long getPostIdByReplyPostId(Long replyPostId);
+
+    /**
+     * 帖子是否存在
+     * @param postId 帖子id
+     * @return 存在为1，不存在为null
+     */
+    Integer isExistsPost(Long postId);
 }

@@ -22,5 +22,13 @@
          AND catalogue_status=1
     </select>
 
-
+    <!--查询分区是否存在-->
+    <select id="isExistsPostBarPartitionByPartitionId" resultType="int">
+        SELECT 1 FROM post_bar_partition WHERE partition_id = #{param1} AND partition_status = 1 LIMIT 1
+    </select>
+    
+    <!--查询目录是否存在-->
+    <select id="isExistsPartitionCatalogueByCatalogueId" resultType="int">
+        SELECT 1 FROM partition_catalogue WHERE catalogue_id = #{param1} AND catalogue_status = 1 LIMIT 1
+    </select>
 </mapper>

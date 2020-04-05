@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PostBarSetEntity {
 
-  private Long postBarId;
-  private Long auditReleasePost;
+    private Long postBarId;
+    private Long auditReleasePost;
 
 }

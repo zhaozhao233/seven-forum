@@ -29,7 +29,6 @@
         ORDER BY top_post DESC, create_time
     </select>
 
-    <!--有坑：关于这个计数具体还是看那些用户的状态变成0之后怎么处理的，嗯……-->
     <select id="countPostInfoByPostBarId" resultType="long">
         SELECT COUNT(*) FROM post_info WHERE post_status = 1 AND post_bar_id = #{param1}
     </select>
@@ -62,7 +61,7 @@
 
     <!--查询帖子的标题和作者-->
     <select id="getPostInfoById" resultType="postInfoEntity">
-    SELECT post_title, user_id,
+    SELECT post_title, user_id
     FROM post_info
     WHERE post_id = #{arg0}
     </select>
@@ -87,14 +86,17 @@
     </resultMap>
     <!--通过帖子id，查出回贴（包括1楼）和回复回帖的数量-->
     <select id="listPostsAndCountReply" resultMap="listPostsAndCountReply">
-        SELECT @i:=@i+1 storey, COUNT(*) num,A.reply_post_id,A.user_id,A.reply_post_content,A.create_time,
-        C.user_name,C.user_img_url,C.vip_id
-        FROM (select  *,@i:=0 from reply_post_info) A
-        LEFT JOIN reply_info B ON A.reply_post_id = B.reply_post_id
-        LEFT JOIN nf_user C ON A.user_id = C.user_id
-        WHERE A.reply_status = 1 AND C.status = 1 AND A.post_id=#{param1}
-        GROUP BY A.reply_post_id
-        ORDER BY A.create_time
+      select *,@i:=@i+1 storey from
+      (select (select COUNT(*) from reply_info where reply_info.reply_post_id = A.reply_post_id and reply_info.reply_status = 1) num,
+      A.reply_post_id,A.user_id,A.reply_post_content,A.create_time,
+      C.user_name,C.user_img_url,C.vip_id
+      from (select *,@i:=0 from reply_post_info) A,reply_info B,nf_user C
+      WHERE B.reply_status = 1
+        AND A.user_id = C.user_id
+        AND A.reply_status = 1
+        AND A.post_id=#{param1}
+      GROUP BY A.reply_post_id
+      ORDER BY A.create_time) D
     </select>
 
     <!--计算帖子下有多少回帖-->
@@ -216,7 +218,7 @@
     </delete>
 
     <delete id="deleteCollectionInPostInfo">
-        DELETE FROM user_collect WHERE user_id = #{arg0} AND collect_obj_id = #{arg1}
+        DELETE FROM user_collect WHERE user_id = #{param1} AND collect_obj_id = #{param2}
     </delete>
 
     <!--删除收藏夹-->
@@ -234,4 +236,66 @@
         DELETE FROM user_attention_post_bar
         WHERE user_id = #{param1} AND post_bar_id = #{param2}
     </delete>
+
+    <!--                 帖子界面的删除按钮                 -->
+
+    <!--修改某个回复不可见-->
+    <update id="updateReplyStatusByReplyId">
+        UPDATE reply_info
+        SET reply_status = 0
+        WHERE reply_id = #{param1}
+    </update>
+
+    <!--修改某个回帖下的回复不可见-->
+    <update id="updateReplyStatusByReplyPostId">
+        UPDATE reply_info
+        SET reply_status = 0
+        WHERE reply_post_id = #{param1}
+    </update>
+
+    <!--修改整个帖子的所有回复不可见-->
+    <update id="updateReplyStatusByPostId">
+        UPDATE reply_info
+        SET reply_status = 0
+        WHERE reply_post_id IN (SELECT reply_post_id FROM reply_post_info WHERE post_id = #{param1})
+    </update>
+    
+    <!--修改某个回帖不可见-->
+    <update id="updateReplyPostStatusByReplyPostId">
+      UPDATE reply_post_info
+      SET reply_status = 0
+      WHERE reply_post_id = #{param1}
+    </update>
+
+    <!--修改整个帖子下所有回帖不可见-->
+    <update id="updateReplyPostStatusByPostId">
+        UPDATE reply_post_info
+        SET reply_status = 0
+        WHERE post_id = #{param1}
+    </update>
+
+    <update id="updatePostStatusByPostId">
+        UPDATE post_info
+        SET post_status = 0
+        WHERE post_id = #{param1}
+    </update>
+    
+    <select id="getFirstReplyPostIdByReplyPostId" resultType="long">
+        SELECT reply_post_id FROM reply_post_info
+        WHERE post_id =
+        (SELECT post_id FROM reply_post_info WHERE reply_post_id = #{param1})
+        ORDER BY create_time
+        LIMIT 1
+    </select>
+
+    <!--通过回帖id查出帖子id-->
+    <select id="getPostIdByReplyPostId" resultType="long">
+        SELECT post_id FROM reply_post_info
+        WHERE reply_post_id = #{param1}
+    </select>
+    
+    <!--查询帖子是否存在-->
+    <select id="isExistsPost" resultType="int">
+        SELECT 1 FROM post_info WHERE post_id = #{param1} AND post_status = 1 LIMIT 1
+    </select>
 </mapper>

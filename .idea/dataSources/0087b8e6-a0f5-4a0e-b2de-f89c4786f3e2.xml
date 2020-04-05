@@ -1838,7 +1838,7 @@
     <column id="380" parent="255" name="post_content">
       <Position>4</Position>
       <Comment>帖子内容</Comment>
-      <DataType>varchar(1224)|0s</DataType>
+      <DataType>varchar(5000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1984,7 +1984,7 @@
     <column id="400" parent="257" name="reply_post_content">
       <Position>4</Position>
       <Comment>回帖内容</Comment>
-      <DataType>varchar(1224)|0s</DataType>
+      <DataType>varchar(5000)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
