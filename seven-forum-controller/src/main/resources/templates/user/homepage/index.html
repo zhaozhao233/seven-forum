@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>叮当猫的个人空间</title>
+<!--		<link rel="shortcut icon" href="/static/images/user/homepage/tx.css">-->
+		<!--主页-->
+		<link rel='stylesheet' id='style-css' href='/static/css/user/homepage/style.css' type='text/css' media='all'>
+		<link rel='stylesheet' id='lmlblog-css' href='/static/css/user/homepage/lmlblog.css' type='text/css' media='all'>
+		<link rel='stylesheet' id='all-css' href='/static/css/user/homepage/all.css' type='text/css' media='all'>
+		<!--阿里图标库-->
+		<link rel="stylesheet" href="/static/iconfont/iconfont.css" />
+		<!--layui-->
+		<link rel="stylesheet" href="/static/layui/css/layui.css"/>
+		
+		<script type='text/javascript' src='/static/js/jquery-3.4.1.min.js'></script>
+		<!--layui-->
+		<script type='text/javascript' src='/static/layui/layui.js'></script>
+
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			img.wp-smiley,img.emoji {
+				display: inline !important;
+				border: none !important;
+				box-shadow: none !important;
+				height: 1em !important;
+				width: 1em !important;
+				margin: 0 .07em !important;
+				vertical-align: -0.1em !important;
+				background: none !important;
+				padding: 0 !important;
+			}
+			/*这部分是未登录页面样式*/
+			#not-login_container {
+				width: 100%;
+				height: 630px;
+				background-color: brown;
+				background-image: url(/static/images/background-image/user/homepage/not-login-backgroundimage_.jpg)
+			}
+			/*点赞后按钮改为红色*/
+			.iconlike1 {
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 菜单 -->
+		<div class="menu-bar">
+			<div class="head_content">
+				<h1 class="m-logo"><a href="javascript:void(0);" style="background-image:url('/static/images/logo/logo.png')"></a></h1>
+				<div id="nav" class="menu-menu-1-container">
+					<ul id="menu-menu-1" class="menu">
+						<li class="menu-item"><a href="/home/index" target="_blank"><i class="fa fa-home"></i> 首页</a></li>
+						<li class="menu-item gengxin"><a href="/user/homepage"><i class="iconfont iconwodedangxuan"></i> 个人中心</a></li>
+						<!--被选中示例-->
+						<!-- <li id="menu-item" class="gengxin menu-item"><a href="">空间</a></li> -->
+						<!--带下拉列表示例-->
+						<!-- <li class="menu-item menu-item-has-children"><a href="">好友</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="">燕凌姣</a></li>
+								<li class="menu-item"><a href="">姬如雪</a></li>
+								<li class="menu-item"><a href="">陆林轩</a></li>
+								<li class="menu-item"><a href="">红莲</a></li>
+								<li class="menu-item"><a href="">陆雪琪</a></li>
+								<li class="menu-item"><a href="">画江湖</a></li>
+							</ul>
+						</li> -->
+					</ul>
+				</div>
+				<div class="head_user_info">
+					<ul>
+<!--						<li id="head_search"><i class="fa fa-search"></i></li>-->
+						<li id="head_login">登录</li>
+<!--						<span class="head_login_middle">or</span>-->
+<!--						<li id="head_reg" onclick="#1">注册</li>-->
+					</ul>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div><!-- menu-bar -->
+		<!--主要部分-->
+		<div class="lmlblog-member-main" data="1" style="margin-top:20px;">
+			<!--头部用户信息-->
+			<div class="lmlblog-member-header">
+				<div class="lmlblog-member-avatar other">
+					<img src="/static/images/user/headpicture/3.jpg" class="avatar">
+					<i class="lmlblog-verify lmlblog-verify-a" title="用户为尊贵的vip!"></i></div>
+				<div class="lmlblog-member-username">
+					<h1>叮当猫</h1>
+					<!--无性别数据-->
+					<!-- <span class="lmlblog-mark lmlblog-girl"><i class="fa fa-mars"></i></span> -->
+					<span class="lmlblog-mark lmlblog-lv" title="经验：3815">Lv.6</span>
+					<span class="lmlblog-mark lmlblog-vip">VIP 6</span>
+				</div>
+				<!-- <div class="lmlblog-member-desc">江湖风雨，几度阑珊。沧海一粟，愿君一剑轻安。</div> -->
+				<div class="lmlblog-member-follow-info">
+					<a href="javascript:;" target="_blank" rel="nofollow">
+						<span class="follow no opacity"><i class="lmlblog-icon"></i>关注</span>
+					</a>
+				</div>
+			</div>
+			<!--内容-->
+			<div class="lmlblog-member-content">
+				<!--导航栏-->
+				<div class="lmlblog-member-menu clear">
+					<li class="on">主页</li>
+					<li>收藏</li>
+					<li>关注</li>
+					<li>粉丝</li>
+				</div>
+				<div class="lmlblog-member-content-list clear">
+
+					<!--左边内容-->
+					<div class="lmlblog-member-left">
+						<!--数量统计-->
+						<div class="lmlblog-member-left-follow clear">
+							<li>
+								<strong>168</strong>
+								<span>动态</span>
+							</li>
+							<li>
+								<strong>666</strong>
+								<span>关注</span>
+							</li>
+							<li>
+								<strong>1322</strong>
+								<span>粉丝</span>
+							</li>
+						</div>
+						<!--背景音乐控制-->
+						<div class="lmlblog-member-left-bg-music clear">
+							<h3>背景音乐</h3>
+							<div id="lmlblog-memeber-bg-music" class="aplayer"><span style="color:blue;">一剑倾城 - Pig小优</span></div>
+							<audio src="https://img.jinsom.cn/user_files/12551/bg-music/music_1530776683.mp3" autoplay="" controls=""></audio>
+						</div>
+						<!--资料简介-->
+						<div class="lmlblog-member-left-profile">
+							<h3>资料简介</h3>
+							<li><i class="iconfont iconid"></i> I D：<span>10001</span></li>
+							<li><i class="iconfont iconnicheng"></i> 昵称：<span>叮当猫</span></li>
+							<li><i class="iconfont iconyouxiang"></i> 邮箱：<span>1677601365@qq.com</span></li>
+							<!-- <div class="lmlblog-member-left-profile-hide">
+								<li><i class="fa fa-qq"></i> Q Q：<span>sikongqi</span></li>
+								<li><i class="fa fa-wechat"></i> 微信：<span>天涯路远，一剑轻安。携琪之手，相伴江湖</span></li>
+								<li><i class="fa fa-weibo"></i> 微博：<span>司空琪吧官博</span></li>
+								<li><i class="fa fa-clock-o"></i> 生日：<span>2月15日</span></li>
+							</div>
+							<div class="lmlblog-member-left-profile-more">查看更多 <i class="fa fa-angle-right"></i></div> -->
+						</div>
+						<!--最近访客-->
+						<div class="lmlblog-member-left-visitor clear">
+							<h3>最近访客</h3>
+							<li><a href="" title="访问时间：22分钟前"><img src="/static/images/user/headpicture/1.gif" class="avatar">
+									<p>born</p>
+								</a></li>
+							<li><a href="" title="访问时间：3小时前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/qi.jpg" class="avatar">
+									<p>司空琪</p>
+								</a></li>
+							<li><a href="" title="访问时间：10小时前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/2.gif" class="avatar">
+									<p>晴川</p>
+								</a></li>
+							<li><a href="" title="访问时间：14小时前"><img src="/static/images/user/headpicture/3.gif" class="avatar">
+									<p>大白兔</p>
+								</a></li>
+							<li><a href="" title="访问时间：15小时前"><img src="/static/images/user/headpicture/4.jpg" class="avatar">
+									<p>momo</p>
+								</a></li>
+							<li><a href="" title="访问时间：1天前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/5.png" class="avatar">
+									<p>啦啦啦123</p>
+								</a></li>
+							<li><a href="" title="访问时间：1天前"><img src="/static/images/user/headpicture/6.gif" class="avatar">
+									<p>随风</p>
+								</a></li>
+							<li><a href="" title="访问时间：1天前"><img src="/static/images/user/headpicture/7.gif" class="avatar">
+									<p>哒哒</p>
+								</a></li>
+							<li><a href="" title="访问时间：1天前"><img src="/static/images/user/headpicture/8.gif" class="avatar">
+									<p>陌若</p>
+								</a></li>
+							<li><a href="" title="访问时间：2天前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/9.gif" class="avatar">
+									<p>hidhz</p>
+								</a></li>
+							<li><a href="" title="访问时间：2天前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/10.gif" class="avatar">
+									<p>老虎</p>
+								</a></li>
+							<li><a href="" title="访问时间：3天前"><img src="/static/images/user/headpicture/11.gif" class="avatar">
+									<p>不要演有事说</p>
+								</a></li>
+							<li><a href="" title="访问时间：3天前"><img src="/static/images/user/headpicture/12.gif" class="avatar">
+									<p>瑾似流年</p>
+								</a></li>
+							<li><a href="" title="访问时间：3天前"><img src="/static/images/user/headpicture/13.gif" class="avatar">
+									<p>九张机</p>
+								</a></li>
+							<li><a href="" title="访问时间：4天前"><img src="/static/images/user/headpicture/14.jpg" class="avatar">
+									<p>美美哒</p>
+								</a></li>
+							<li><a href="" title="访问时间：4天前"><span class="lmlblog-vip-icon"></span><img src="/static/images/user/headpicture/15.gif" class="avatar">
+									<p>zanbocm</p>
+								</a></li>
+							<li><a href="" title="访问时间：4天前"><img src="/static/images/user/headpicture/16.gif" class="avatar">
+									<p>yfdaifhc</p>
+								</a></li>
+							<li><a href="" title="访问时间：4天前"><img src="/static/images/user/headpicture/17.png" class="avatar">
+									<p>xcxla</p>
+								</a></li>
+							<li><a href="" title="访问时间：4天前"><img src="/static/images/user/headpicture/18.jpg" class="avatar">
+									<p>墨虹客栈</p>
+								</a></li>
+							<li><a href="" title="访问时间：5天前"><img src="/static/images/user/headpicture/19.jpg" class="avatar">
+									<p>空间吧</p>
+								</a></li>
+						</div>
+						<!--相关推荐-->
+						<div class="lmlblog-member-left-bg-xg clear">
+							<h3>相关推荐</h3>
+							<div id="lmlblog-memeber-bg-xg" class="aplayer"></div>
+							<a href="javascript:;" target="_blank">
+								<h2>燕凌姣个人主页</h2>
+								<img src="/static/images/user/headpicture/jiao.jpg" alt="燕凌姣个人主页">
+								<p>　　一袭蓝衣亭亭玉立，姣若春梅绽雪，神如月射寒江，香培玉琢、英姿飒爽;其静兰生幽谷，其动若飞若扬，性格大气坚毅、疏朗开阔，举止敢爱敢恨、聪明磊落...他就是燕凌姣</p>
+							</a>
+						</div>
+					</div>
+					<!--右边内容-->
+					<div class="lmlblog-member-right">
+
+						<!--所有动态-->
+						<div class="lmlblog-post-list">
+							<div class="lmlblog-posts-list words" style="background-image:url(/static/images/background-image/user/homepage/058.png); " data="4197">
+								<!-- 作者信息 -->
+								<div class="lmlblog-post-user-info">
+									<!--头像图片-->
+									<div class="lmlblog-post-user-info-avatar" user-data="1">
+										<a href="" style="display: inline-block;">
+											<span class="lmlblog-vip-icon"></span>
+											<img src="/static/images/user/headpicture/3.jpg" class="avatar"><i class="lmlblog-verify lmlblog-verify-a" title="叮当猫"></i>
+										</a>
+										<!--悬停显示资料卡-->
+										<!-- <div class="lmlblog-user-info-card">
+											<div class="info_card_loading"><img src="picture/chat-loading.gif">
+												<p>资料加载中...</p>
+											</div>
+										</div> -->
+									</div>
+									<!--名字、等级、vip-->
+									<div class="lmlblog-post-user-info-name">
+										<a href="">
+											<font style="color:#333;font-weight:600">叮当猫</font>
+										</a>
+										<span class="lmlblog-mark lmlblog-lv" title="经验：3815">Lv.6</span><span class="lmlblog-mark lmlblog-vip">VIP
+											6</span>
+									</div>
+									<!--动态发表时间-->
+									<div class="lmlblog-post-user-info-time" title="2017-12-14 05:25">12-14 05:25</div>
+								</div>
+								<!--文本内容-->
+								<div class="lmlblog-post-content ">
+									<span class="post_list_link">
+										<p>　　疏星淡月，紫陌曲岸，持觞游赏，神移长川。一片彀纹，溶溶泄泄，忽而烟靡云敛。睹一丽人，缦立青水，云蒸雾霭，花衬善睐。荧荧兮若北辰之荣现，扰扰兮若紫玉之生烟。颜如舜华，迫闻素腰华琚摇;和颜静志，远望渌水呈雾绡。戏流光之夜蝶，采舞雪之琼花，流眷眷之眸光，润荣曜之笑靥。</p>
+										<p>　　偶得美人回顾，思之朝朝暮暮。采芝兰以明愫，寄琼琚以作妆。余咏永慕叹道长，彼应影独愿偕芳。才知世有解语，不过琪语溯光。<img src="/static/images/user/homepage/66.png" alt="[s-65]" class="wp-smiley">
+											<img src="/static/images/user/homepage/8.png" alt="[s-65]" class="wp-smiley"></p>
+									</span>
+								</div>
+								<!--动态操作按钮列表-->
+								<div class="lmlblog-post-bar">
+									<li class="likeOrCancelLikeDynamic" title="点赞">
+										<i class="iconfont iconlike"></i> <span>5</span>
+									</li>
+									<li class="goToComment" title="评论">
+										<i class="lmlblog-icon">&#xe633;</i> <span>5</span>
+									</li>
+									<li class="browseTimes" title="浏览次数">
+										<i class="lmlblog-icon">&#xe602;</i> <span>1.2w</span>
+									</li>
+								</div>
+								<!--点赞用户列表-->
+								<div class="lmlblog-post-like-list">
+									<a href="" id="had_like_11788">
+										<img src="/static/images/user/headpicture/11.gif" class="avatar"></a>
+									<a href="" id="had_like_11499"><img src="/static/images/user/headpicture/12.gif" class="avatar"></a>
+									<a href="" id="had_like_11488"><img src="/static/images/user/headpicture/20.png" class="avatar">
+										<i class="lmlblog-verify lmlblog-verify-a" title="认证信息：作者许仙白"></i></a><a href="" id="had_like_11477">
+										<img src="/static/images/user/headpicture/13.gif" class="avatar">
+										<i class="lmlblog-verify lmlblog-verify-a" title="认证信息：168号计师"></i></a><a href="" id="had_like_1">
+										<img src="/static/images/user/headpicture/tx2.jpg" class="avatar">
+										<i class="lmlblog-verify lmlblog-verify-a" title="司空琪"></i></a></div>
+								<div class="lmlblog-post-footer-bar">
+									<!--使用的设备类型-->
+									<!-- <span>电脑端adsafafs</span><i class="lmlblog-icon" onclick="lmlblog_post_type_open();">&#xe62c;</i> -->
+								</div>
+							</div>
+						</div>
+						<!--分页-->
+						<div class="lmlblog-pager"><a class="lmlblog-pager-left" href="">上一页</a>
+							<div class="lmlblog-pager-center layui-form">
+								<select>
+									<option value="#=1">第 1 页
+									<option value="#=2">第 2 页
+									<option selected="selected" value="#3">第 3 页
+								</select>
+							</div>
+							<a class="lmlblog-pager-right" href="">下一页</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				</div>
+			</div>
+		</div>
+		<!-- 返回顶部 -->
+		<a href="javascript:returnTop();" class="cd-top"></a>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				clickNavigationBar();
+				clickDynamicControlButton();
+				clickLogin();
+			})
+			//点击导航栏菜单
+			function clickNavigationBar() {
+				$(".lmlblog-member-menu").on("click", "li", function(e) {
+					//先去掉其他选中的效果
+					var lis = $(e.target).parent().children();
+					for (var i = 0; i <= lis.length - 1; i++) {
+						$(lis[i]).removeClass("on");
+					}
+					//给被点击项添加样式
+					$(e.target).addClass("on");
+					//显示对应信息页面
+					//先清空
+					$(".lmlblog-member-right").empty();
+					if ($(e.target).text() == "主页") {
+						var html = "<h1>动态主页</h1>";
+						$(".lmlblog-member-right").append(html);
+					} else if ($(e.target).text() == "收藏") {
+						var html = "<h1>收藏页面</h1>";
+						$(".lmlblog-member-right").append(html);
+					} else if ($(e.target).text() == "关注") {
+						var html = "<h1>关注页面</h1>";
+						$(".lmlblog-member-right").append(html);
+					} else {
+						var html = "<h1>粉丝页面</h1>";
+						$(".lmlblog-member-right").append(html);
+					}
+				})
+			}
+			//点赞,评论
+			function clickDynamicControlButton() {
+				$(".lmlblog-post-bar").on("click", "li", function(e) {
+					//获取点击的li
+					var li;
+					if ($(e.target).prop("tagName") == "LI") {
+						li = $(e.target);
+					} else {
+						li = $(e.target).parent();
+					}
+					//判断是哪个
+					if (li.hasClass("likeOrCancelLikeDynamic")) {
+						//点赞或取消
+						if ($(li.children()[0]).attr("class") == "iconfont iconlike") {
+							//未点赞,点赞
+							$(li.children()[0]).attr("class", "iconfont iconlike1");
+							li.attr("title", "取消点赞");
+							//操作数据库
+						} else {
+							//已点赞,取消点赞
+							$(li.children()[0]).attr("class", "iconfont iconlike");
+							li.attr("title", "点赞");
+						}
+					} else if (li.hasClass("goToComment")) {
+						console.log("评论")
+					} else {
+						console.log("浏览次数");
+					}
+
+				})
+			}
+			//点击登录
+			function clickLogin() {
+				$("#head_login").on("click", function() {
+					$(".lmlblog-member-main").empty();
+					$.ajax({
+						method:"GET",
+						url:"/static/html/user/homepage/not-login.html"
+					}).done(function(resp){
+						$(".lmlblog-member-main").append(resp);
+					})
+				})
+			}
+			//滚动页面到顶部
+			function returnTop() {
+				scrollTo(0, 0);
+			}
+		</script>
+		
+
+	</body>
+
+	
+</html>

@@ -1,6 +1,7 @@
 package com.seven.forum;
 
 import com.seven.forum.entity.lhj.UserDynamicEntity;
+import com.seven.forum.entity.xm.User;
 import com.seven.forum.entity.zyl.PostBarPartitionEntity;
 import com.seven.forum.service.lhj.UserDynamicService;
 import com.seven.forum.service.zyl.PostBarPartitionService;
@@ -9,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @SpringBootApplication
@@ -16,8 +19,7 @@ import java.util.List;
 public class SpringBootApp {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext run =
-                SpringApplication.run(SpringBootApp.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(SpringBootApp.class, args);
 //        PostBarPartitionService bean = run.getBean(PostBarPartitionService.class, run);
 //        List<PostBarPartitionEntity> postBarPartitionEntities = bean.listAllPartitionsAndCatalogues();
 //        for (PostBarPartitionEntity postBarPartitionEntity : postBarPartitionEntities) {
@@ -28,5 +30,6 @@ public class SpringBootApp {
 //        for (UserDynamicEntity userDynamicEntity : userDynamicEntities) {
 //            System.out.println("userDynamicEntity = " + userDynamicEntity);
 //        }
+
     }
 }

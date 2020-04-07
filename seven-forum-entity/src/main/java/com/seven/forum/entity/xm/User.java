@@ -20,16 +20,23 @@ public class User {
     private String userPwd;
     //状态，1存在，0被删除，默认1
     private Integer status;
-    //管理员ID
-    private Integer adminId;
     //等级ID
     private Integer gradeId;
     //会员ID
     private Integer vipId;
+    //管理员ID
+    private Integer adminId;
     //注册时间
     private Date userLogonTime;
     //硬币
     private Integer userCoin;
     //经验值
     private Integer userExp;
+
+    //关联一个等级信息实体
+    private UserGrade userGrade;
+    //关联一个vip信息实体
+    private UserVip userVip;
+    //关联一个管理员实体
+    private Admin admin;
 }

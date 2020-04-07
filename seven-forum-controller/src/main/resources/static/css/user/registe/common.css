@@ -85,14 +85,14 @@ header{
 
 
 .login_wrap{
-	background: url(/static/imags/registe/logo_bg.jpg) no-repeat center;
+	background: url(/static/images/user/registe/logo_bg.jpg) no-repeat center;
 	background-size: 100%;
 }
 .logo{
 	width: 500px;
 	height: 120px;
 	margin: 0px auto;
-	background: url(/static/imags/registe/logowz.png) no-repeat center;
+	background: url(/static/images/user/registe/logowz.png) no-repeat center;
 }
 .login_box{
 	width: 360px;
