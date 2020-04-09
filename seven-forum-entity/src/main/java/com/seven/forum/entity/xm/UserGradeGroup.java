@@ -11,6 +11,8 @@ public class UserGradeGroup {
     private Integer allowComment;
     //是否允许发帖
     private Integer releasePost;
+    //权限描述
+    private String groupDesc;
 
 
 }

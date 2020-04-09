@@ -9,4 +9,6 @@ public interface UserService {
     void addUser(User user);
     //根据手机和密码查询用户id(判断是否登陆成功)
     Integer isLoginSuccess(String userPhone, String userPwd);
+    //根据id查询一个用户的基本信息
+    User getUserBaseInfoByUserId(Integer userId);
 }

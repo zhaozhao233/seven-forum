@@ -6,10 +6,10 @@ import lombok.Data;
 public class UserGrade {
     //等级id
     private Integer gradeId;
+    //等级数
+    private Integer gradeNumber;
     //等级组id
     private Integer groupId;
-    //头衔
-    private String title;
     //下一级所需经验
     private Integer nextGradeExp;
 

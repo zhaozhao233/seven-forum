@@ -76,7 +76,7 @@ public class RegisteController {
         //注册时间
         user.setUserLogonTime(new Date());
         userService.addUser(user);
-        ResponseVO responseVO = new ResponseVO(200,"用户注册成功",null);
+        ResponseVO responseVO = new ResponseVO(200,"用户注册成功",new String("成功"));
         return responseVO;
     }
 }
