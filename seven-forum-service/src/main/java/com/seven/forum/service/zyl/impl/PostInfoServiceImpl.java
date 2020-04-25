@@ -18,6 +18,21 @@ public class PostInfoServiceImpl implements PostInfoService {
     @Autowired
     private PostBarInfoDAO postBarInfoDAO;
 
+    @Override
+    public void updateVisitCount(Long postId) {
+        postInfoDAO.updateVisitCount(postId);
+    }
+
+    @Override
+    public List<PostInfoEntity> listEightPopularPostInfo() {
+        List<PostInfoEntity> postInfoEntities = postInfoDAO.listEightPopularPostInfo();
+        if (postInfoEntities.size() < 8) {
+            List<PostInfoEntity> postInfoEntities1 = postInfoDAO.listPopularPostInfo(8 - postInfoEntities.size());
+            postInfoEntities.addAll(postInfoEntities1);
+        }
+        return postInfoEntities;
+    }
+
     /**
      * 分页获取某个贴吧下的帖子信息
      *

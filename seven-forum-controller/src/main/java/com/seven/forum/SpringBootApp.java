@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.seven.forum.dao.zyl")
 @SpringBootApplication
 @EnableTransactionManagement
-//@ConfigurationPropertiesScan({"com"})
 public class SpringBootApp {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootApp.class, args);

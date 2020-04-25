@@ -7,6 +7,10 @@ import java.util.List;
 
 public interface PostInfoService {
 
+    void updateVisitCount(Long postId);
+
+    List<PostInfoEntity> listEightPopularPostInfo();
+
     List<PostInfoEntity> listAllPostInfos(Long postBarId, Integer pageNum, Integer pageSize);
 
     Long countPostInfoByPostBarId(Long postBarId);

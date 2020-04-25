@@ -13,13 +13,21 @@ public class PostBarInfoServiceImpl implements PostBarInfoService {
     @Autowired
     private PostBarInfoDAO postBarInfoDAO;
 
+    /**
+     * 实际上选的是前8个人数多的贴吧
+     * 并没有从前100里面“随机”选8个，就只是前8个了
+     * 要改的话就直接nextInt(8) --》nextInt(100)
+     * 主要是贴吧没100个状态正常的就会报错
+     * @return
+     */
     @Override
     public List<PostBarInfoEntity> listEightPopularPostBars() {
+        List<Integer> list = postBarInfoDAO.listPopularPostBarIds();
         Random random = new Random();
         Set<Integer> set = new HashSet<>();
         while (set.size() < 8) {
-            int number = random.nextInt(100);
-            set.add(number);
+            int number = random.nextInt(8);
+            set.add(list.get(number));
         }
         return postBarInfoDAO.listPopularPostBars(set);
     }

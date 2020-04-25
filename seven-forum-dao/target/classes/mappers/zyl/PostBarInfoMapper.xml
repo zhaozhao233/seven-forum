@@ -14,7 +14,6 @@
         <result property="createTime" column="createTime"/>
     </resultMap>
 
-    <!--这个不是我写了，后面可以根据情况删除-->
     <!--热门贴吧（前100中的8个）-->
     <select id="listPopularPostBarIds" resultType="int">
         SELECT post_bar_id FROM post_bar_info WHERE post_bar_status = 1 ORDER BY user_count DESC LIMIT 100
@@ -22,13 +21,14 @@
 
     <select id="listPopularPostBars" resultType="postBarInfoEntity">
         SELECT post_bar_id, post_bar_name, post_bar_explain,
-        post_bar_logo_url, post_count, user_count, create_time,
+        post_bar_logo_url, post_count, user_count, create_time
         FROM post_bar_info
         WHERE post_bar_id in
         <foreach collection="collection" open="(" close=")" index="index" item="id" separator=",">
             #{id}
         </foreach>
     </select>
+
 
     <!--某个目录下的贴吧信息-->
     <select id="listPostBarsByCatalogueId" resultMap="postBarInfo">

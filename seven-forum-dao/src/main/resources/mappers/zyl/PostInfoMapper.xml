@@ -16,6 +16,36 @@
         <result property="replyCount" column="num"/>
     </resultMap>
 
+
+    <!--帖子访问数+1-->
+    <update id="updateVisitCount">
+        UPDATE post_info SET visit_count = visit_count + 1
+        WHERE post_id = #{param1}
+    </update>
+
+    <!--前8个热门帖子：一天内评论最多的,若是不够8个，就查总访问数最多的-->
+    <select id="listEightPopularPostInfo" resultType="postInfoEntity">
+        SELECT post_id, post_bar_id, post_title,
+        post_content, user_id, top_post,
+        wonderful_post, audit, visit_count,
+        post_status, create_time
+        FROM post_info
+        WHERE to_days(create_time) = to_days(now())
+        ORDER BY visit_count DESC
+        LIMIT 8
+    </select>
+
+    <select id="listPopularPostInfo" resultType="postInfoEntity">
+        SELECT post_id, post_bar_id, post_title,
+        post_content, user_id, top_post,
+        wonderful_post, audit, visit_count,
+        post_status, create_time
+        FROM post_info
+        WHERE TO_DAYS( NOW( ) ) - TO_DAYS(create_time) >= 1
+        ORDER BY visit_count DESC
+        LIMIT #{param1}
+    </select>
+
     <!--某个贴吧所有界面的帖子，通过置顶降序,时间升序排序-->
     <select id="listAllPostInfos" resultMap="postInfo">
         select COUNT(*) num,post_info.post_id,post_title, post_content, post_info.user_id, top_post, wonderful_post, user_name, post_info.create_time

@@ -7,6 +7,12 @@ import java.util.List;
 
 public interface PostInfoDAO {
 
+    void updateVisitCount(Long postId);
+
+    List<PostInfoEntity> listEightPopularPostInfo();
+
+    List<PostInfoEntity> listPopularPostInfo(Integer size);
+
     List<PostInfoEntity> listAllPostInfos(Long postBarId, @Param("pageNum") Integer pageNum, @Param("pageSize") Integer pageSize);
 
     Long countPostInfoByPostBarId(Long postBarId);

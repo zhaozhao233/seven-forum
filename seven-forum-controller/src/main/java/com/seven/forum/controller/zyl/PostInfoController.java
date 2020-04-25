@@ -18,6 +18,17 @@ public class PostInfoController {
     @Autowired
     private PostInfoService postInfoService;
 
+    @PutMapping("/visitCounts")
+    public ResponseVO updateVisitCount(Long postId) {
+        log.trace("帖子id[" + postId + "]访问数+1");
+        postInfoService.updateVisitCount(postId);
+        return new ResponseVO(200, "success");
+    }
+
+    @GetMapping("/populars/postInfos")
+    public ResponseVO listPopularPostInfos() {
+        return new ResponseVO(200, "success", postInfoService.listEightPopularPostInfo());
+    }
     /**
      * 查询帖子所属的贴吧信息
      *

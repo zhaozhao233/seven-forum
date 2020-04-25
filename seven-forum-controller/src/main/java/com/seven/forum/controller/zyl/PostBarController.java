@@ -18,6 +18,12 @@ public class PostBarController {
     @Autowired
     private PostInfoService postInfoService;
 
+    @GetMapping("/populars/postBars")
+    public ResponseVO getPopularPostBars() {
+        log.trace("主页显示了8个热门贴吧");
+        return new ResponseVO(200, "success", postBarInfoService.listEightPopularPostBars());
+    }
+
     @GetMapping("/postBars/{postBarId}")
     public ResponseVO getPostBar(@PathVariable("postBarId")Long postBarId) {
         log.trace("用户搜索了id为" + postBarId + "的贴吧");
