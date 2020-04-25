@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface UserDynamicDao {
     //显示关注人的动态
-    List<UserDynamicEntity> listFollowUserDynamic(Integer pageNum,
-                                                  Integer pageSize, Integer userId);
+    List<UserDynamicEntity> listFollowUserDynamic(@Param("pageNum") Integer pageNum,
+                                                  @Param("pageSize") Integer pageSize, Integer userId);
+    //热门动态
+    List<UserDynamicEntity> listHotDynamic();
 
     //显示该动态的所有评论
     List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,
@@ -23,7 +25,7 @@ public interface UserDynamicDao {
                    String commentContent,Integer replyUserId,Integer commentStatus);
 
     //发布动态
-    void releaseDynamic(Integer userId,String dynamicContent);
+    void releaseDynamic(@Param("userId") Integer userId,String dynamicContent);
 
     //评论数+1
     void addCommentCount(Integer dynamicId);

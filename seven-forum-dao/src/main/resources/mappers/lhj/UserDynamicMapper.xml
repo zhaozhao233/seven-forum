@@ -8,17 +8,27 @@
        select dynamic_id, u.user_id, dynamic_content, dynamic_status,
        dynamic_time, like_count, comment_count,
        a.user_img_url,a.user_name from user_dynamic
-       u inner join nf_user a
-       where u.user_id = #{userId} or  u.user_id
-       in (select attention_user_id  from user_attention_user where user_id= #{userId})
-       order by dynamic_time desc
+                                           u inner join nf_user a on a.user_id = u.user_id
+where  u.user_id = #{userId} or u.user_id
+          in (select attention_user_id  from user_attention_user where user_id= #{userId})
+              order by dynamic_time desc
+    </select>
+
+    <select id="listHotDynamic" resultType="com.seven.forum.entity.lhj.UserDynamicEntity">
+
+       select * from (select dynamic_id, d.user_id, dynamic_content,
+       dynamic_status, dynamic_time, like_count,
+       comment_count ,n.user_name,n.user_img_url
+       from user_dynamic d inner join nf_user n
+       on d.user_id = n.user_id  order by like_count desc  limit 100)
+       a order by  rand() limit 10
     </select>
 
     <select id="listCommentByDynamicId" resultType="com.seven.forum.entity.lhj.UserCommentEntity">
         /*显示评论*/
        select comment_id, a.user_id, dynamic_id, dynamic_status, reply_user_id, comment_time,
        like_count, comment_content, comment_status,b.user_img_url,b.user_name
-       from user_comment a inner join nf_user b where dynamic_id = #{dynamicId} order by comment_time desc
+       from user_comment a inner join nf_user b on a.user_id = b.user_id where dynamic_id = #{dynamicId} order by comment_time desc
     </select>
 
     <insert id="commentDynamic">
