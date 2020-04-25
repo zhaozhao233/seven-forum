@@ -21,6 +21,11 @@ public class UserDynamicServiceImpl implements UserDynamicService {
     }
 
     @Override
+    public List<UserDynamicEntity> listHotDynamic() {
+        return dynamicDao.listHotDynamic();
+    }
+
+    @Override
     public List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,Integer dynamicId) {
         return dynamicDao.listCommentByDynamicId(pageNum,pageSize,dynamicId);
     }

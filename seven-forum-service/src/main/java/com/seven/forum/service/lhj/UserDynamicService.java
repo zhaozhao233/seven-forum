@@ -10,6 +10,8 @@ public interface UserDynamicService {
     List<UserDynamicEntity> listFollowUserDynamic(Integer pageNum,
                                                   Integer pageSize, Integer userId);
 
+    List<UserDynamicEntity> listHotDynamic();
+
     List<UserCommentEntity> listCommentByDynamicId(Integer pageNum,Integer pageSize,Integer dynamicId);
 
 
