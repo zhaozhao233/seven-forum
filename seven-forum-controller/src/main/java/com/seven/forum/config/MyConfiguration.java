@@ -17,6 +17,7 @@ public class MyConfiguration implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("http://127.0.0.1:8848")
                 .allowedOrigins("http://localhost:8080")
-                .allowedMethods("GET","POST","OPTIONS");
+                .allowedOrigins("http://localhost:8081")
+                .allowedMethods("GET","POST","OPTIONS").allowCredentials(false);
     }
 }
