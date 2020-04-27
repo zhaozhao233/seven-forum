@@ -41,9 +41,16 @@ public class UserServiceImpl implements UserService {
         //先查询出基本信息（三个组信息没查出来）
         User user = userDao.getUserBaseInfoByUserId(userId);
         //查询组信息
+        //等级组
         user.getUserGrade().setUserGradeGroup(userGradeGroupDao.getUserGradeGroupByGroupId(user.getUserGrade().getGroupId()));
-        user.getUserVip().setUserVipGroup(userVipGroupDao.getUserVipGroupByGroupId(user.getUserVip().getVipGroupId()));
-        user.getAdmin().setAdminGroup(adminGroupDao.getAdminGroupByGroupId(user.getAdmin().getAdminGroupId()));
+        //vip组
+        if(user.getVipId()!=null){
+            user.getUserVip().setUserVipGroup(userVipGroupDao.getUserVipGroupByGroupId(user.getUserVip().getVipGroupId()));
+        }
+        //管理员组
+        if(user.getAdminId()!=null){
+            user.getAdmin().setAdminGroup(adminGroupDao.getAdminGroupByGroupId(user.getAdmin().getAdminGroupId()));
+        }
         return user;
     }
 }

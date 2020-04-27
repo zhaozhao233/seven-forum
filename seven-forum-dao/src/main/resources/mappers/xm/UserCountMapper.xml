@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.xm.UserCountDao">
+
+    <!--根据userId查询用户统计信息-->
+    <select id="getUserCountByUserId" resultType="com.seven.forum.entity.xm.UserCount">
+        select *
+        from nf_user_count
+        where user_id = #{userId}
+    </select>
+
+</mapper>

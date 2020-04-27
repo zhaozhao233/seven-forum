@@ -26,8 +26,8 @@
     <select id="getUserBaseInfoByUserId" resultMap="userBaseInfoResultMap">
         select *
         from nf_user A inner join nf_user_grade B on A.grade_id = B.grade_id
-                       inner join nf_user_vip C on A.vip_id = C.vip_id
-                       inner join nf_admin D on A.admin_id = D.admin_id
+                       left join nf_user_vip C on A.vip_id = C.vip_id
+                       left join nf_admin D on A.admin_id = D.admin_id
         where A.user_id = #{userId}
     </select>
     <!--用户基本信息结果映射-->

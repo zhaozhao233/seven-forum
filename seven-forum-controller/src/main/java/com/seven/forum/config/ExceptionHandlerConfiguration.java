@@ -12,7 +12,7 @@ public class ExceptionHandlerConfiguration {
     @ExceptionHandler(Throwable.class)
     @ResponseBody
     public ResponseVO<String> handleException(Throwable e){
-        ResponseVO responseVO = new ResponseVO(500,"错误",e.getMessage());
+        ResponseVO responseVO = new ResponseVO(500,e.getMessage(),null);
         return responseVO;
     }
 }
