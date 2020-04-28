@@ -14,6 +14,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -28,8 +29,8 @@ public class SpringBootApp {
         ConfigurableApplicationContext run =
                 SpringApplication.run(SpringBootApp.class, args);
 
-        NfMessageService service1 = run.getBean(NfMessageService.class);
-        ChattingService service2 = run.getBean(ChattingService.class);
+//        NfMessageService service1 = run.getBean(NfMessageService.class);
+//        ChattingService service2 = run.getBean(ChattingService.class);
 
 
 

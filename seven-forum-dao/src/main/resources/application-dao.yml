@@ -10,7 +10,7 @@ mybatis:
   # mybatis要扫描到的文件
   mapper-locations: classpath*:mappers/**/*.xml
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #   下划线转换为大写
     map-underscore-to-camel-case: true
   # 辅助功能，mapper文件里找文件时，不用写全部路径

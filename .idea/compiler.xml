@@ -9,12 +9,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="seven-forum-controller" />
         <module name="seven-forum-service" />
-        <module name="seven-forum-entity" />
-        <module name="seven-forum-dao" />
         <module name="seven-forum-util" />
+        <module name="seven-forum-dao" />
+        <module name="seven-forum-entity" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="seven-forum" target="1.8" />
+      <module name="seven-forum-controller" target="1.8" />
+      <module name="seven-forum-dao" target="1.8" />
+      <module name="seven-forum-entity" target="1.8" />
+      <module name="seven-forum-service" target="1.8" />
+      <module name="seven-forum-util" target="1.8" />
       <module name="seven-forum-web" target="1.5" />
     </bytecodeTargetLevel>
   </component>
