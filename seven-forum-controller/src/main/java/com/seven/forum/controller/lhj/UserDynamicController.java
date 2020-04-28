@@ -1,5 +1,6 @@
 package com.seven.forum.controller.lhj;
 
+import com.github.pagehelper.PageInfo;
 import com.seven.forum.entity.lhj.UserCommentEntity;
 import com.seven.forum.entity.lhj.UserDynamicEntity;
 import com.seven.forum.service.lhj.UserDynamicService;
@@ -17,13 +18,14 @@ import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Controller
 @RequestMapping("/dynamic")
-@CrossOrigin(value = "http://127.0.0.1:8848",
-                methods = {RequestMethod.DELETE,RequestMethod.GET,RequestMethod.POST},
-            allowCredentials = "true")
+@CrossOrigin(value = {"http://127.0.0.1:8848"},
+        methods = {RequestMethod.DELETE,RequestMethod.GET,RequestMethod.POST},
+        allowCredentials = "false")
 public class UserDynamicController {
 
     private static final String FILE_DIRECTORY = "D:\\A-learn\\A-TeamProject\\seven-forum\\seven-forum-controller\\src\\main\\resources\\static\\image";
@@ -35,20 +37,26 @@ public class UserDynamicController {
     //显示我and关注的人发的动态
     @RequestMapping("/followUserDynamic")
     @ResponseBody
-    public ResponseVO listDynamic(Integer pageNum,Integer pageSize,Integer userId){
+    public ResponseVO listDynamic(@RequestParam(defaultValue = "1") Integer pageNum,@RequestParam(defaultValue = "4")Integer pageSize,Integer userId){
         List<UserDynamicEntity> userDynamicEntities = dynamicService.listFollowUserDynamic(pageNum, pageSize, userId);
-        ResponseVO vo = new ResponseVO();
-        vo.setData(userDynamicEntities);
-        return vo;
+        PageInfo<UserDynamicEntity> pageInfo = new PageInfo<>(userDynamicEntities,3);
+        return  new ResponseVO(200,"ok",pageInfo);
+    }
+    @RequestMapping("/listHotDynamic")
+    @ResponseBody
+    public ResponseVO listHotDynamic(){
+
+        List<UserDynamicEntity> hotDynamic = dynamicService.listHotDynamic();
+        return new ResponseVO(200,"ok",hotDynamic);
     }
 
     @RequestMapping("/listComment")
+    @ResponseBody
     //显示该动态下的所有评论
-    public ResponseVO listComment(Integer pageNum,Integer pageSize,Integer dynamicId){
+    public ResponseVO listComment(Integer pageNum,@RequestParam(defaultValue = "4") Integer pageSize,Integer dynamicId){
         List<UserCommentEntity> userCommentEntities = dynamicService.listCommentByDynamicId(pageNum,pageSize,dynamicId);
-        ResponseVO responseVO = new ResponseVO();
-        responseVO.setData(userCommentEntities);
-        return responseVO;
+        PageInfo<UserCommentEntity> pageInfo = new PageInfo<>(userCommentEntities,3);
+        return  new ResponseVO(200,"ok",pageInfo);
     }
 
     @RequestMapping("/commentDynamic")
@@ -69,23 +77,27 @@ public class UserDynamicController {
 
     @PostMapping("/releaseDynamic")
     @ResponseBody
+    @CrossOrigin
     //发布动态
-    public String releaseDynamic(Integer userId, String dynamicContent, MultipartFile[] myFiles){
+    public String releaseDynamic(@RequestParam(value = "userId") Integer userId, String dynamicContent, MultipartFile[] myFiles){
         String filename;
         String newFilename;
         String ext;
-        for (MultipartFile myFile : myFiles) {
-             filename =  myFile.getOriginalFilename();
-             newFilename = UUID.randomUUID().toString();
-             ext = filename.substring(filename.lastIndexOf("."));
-            dynamicContent+="<img src='"+FILE_DIRECTORY+newFilename+ext+"'/>";
-            Path path = FileSystems.getDefault().getPath(FILE_DIRECTORY,newFilename + ext);
-            try {
-                myFile.transferTo(path);
-            }catch (IOException e){
-                e.printStackTrace();
+        if (myFiles!=null){
+            for (MultipartFile myFile : myFiles) {
+                filename =  myFile.getOriginalFilename();
+                newFilename = UUID.randomUUID().toString();
+                ext = filename.substring(filename.lastIndexOf("."));
+                dynamicContent+="<img src='"+FILE_DIRECTORY+newFilename+ext+"'/>";
+                Path path = FileSystems.getDefault().getPath(FILE_DIRECTORY,newFilename + ext);
+                try {
+                    myFile.transferTo(path);
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
             }
         }
+
         dynamicService.releaseDynamic(userId,dynamicContent);
         return "release done";
     }
@@ -126,13 +138,11 @@ public class UserDynamicController {
         }else {
             //取消点赞
             if (status==1){
-                System.out.println("取消-----");
                 dynamicService.cancelCommentLikeAndReduceLikeCount(likeObjId,userId,commentId);
                 return "cancel";
             }
             //取消后又点赞
             if (status==0){
-                System.out.println("取消后----");
                 dynamicService.commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(likeObjId,userId,commentId);
                 return "after cancel";
             }
