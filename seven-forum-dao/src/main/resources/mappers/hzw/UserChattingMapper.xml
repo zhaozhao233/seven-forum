@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.hzw.UserChattingDao">
+
+<!--    查询用户之间的聊天记录-->
+    <select id="listChattingByBetweenUser" resultType="com.seven.forum.entity.hzw.chatting.UserChattingEntity">
+        select chatting_id, user_id, chatting_user_id, chatting_content, chatting_time, chatting_status from user_chatting where
+        user_id = #{sendUserId} and chatting_user_id = #{receiveUserId}
+    </select>
+<!--    查询用户之间的最后一条聊天记录-->
+    <select id="getLastChattingByBetweenUser" resultType="com.seven.forum.entity.hzw.chatting.UserChattingEntity">
+        select chatting_id, user_id, chatting_user_id, chatting_content, chatting_time, chatting_status from user_chatting where
+        user_id = #{sendUserId} or chatting_user_id = #{sendUserId} order by chatting_id desc limit 1
+    </select>
+<!--    每个用户只查询一条(发送)-->
+    <select id="getUserIdOneByReceive" resultType="com.seven.forum.entity.hzw.chatting.UserChattingEntity">
+        select user_id from user_chatting where chatting_user_id = #{receiveUserId} group by user_id
+    </select>
+<!--    每个用户只查询一条(接收)-->
+    <select id="getUserIdOneBySend" resultType="com.seven.forum.entity.hzw.chatting.UserChattingEntity">
+        select chatting_user_id from user_chatting where user_id = #{sendUserId} group by chatting_user_id
+    </select>
+
+
+<!--    插入一条聊天记录-->
+    <insert id="insertChatting">
+        insert into user_chatting(user_id, chatting_user_id, chatting_content, chatting_time, chatting_status) values
+        (#{chatting.userId},#{chatting.chattingUserId},#{chatting.chattingContent},#{chatting.chattingTime},#{chatting.chattingStatus})
+    </insert>
+<!--    群发聊天信息-->
+    <insert id="insertChattingList">
+        insert into user_chatting(user_id, chatting_user_id, chatting_content, chatting_time, chatting_status) values
+        <foreach collection="userIdList" separator="," item="userId">
+            (#{chatting.userId},#{userId},#{chatting.chattingContent},#{chatting.chattingTime},#{chatting.chattingStatus})
+        </foreach>
+    </insert>
+<!--    修改一条聊天记录-->
+    <update id="updateChatting">
+        update user_chatting set chatting_status = #{status} where chatting_id = #{chattingId}
+    </update>
+<!--    修改多条聊天记录-->
+    <update id="updateChattingList">
+        update user_chatting set chatting_status = #{status} where chatting_Id in
+        <trim prefix="(" suffix=")">
+            <foreach collection="chattingIdList" separator="," item="chattingId">
+                #{chattingId}
+            </foreach>
+        </trim>
+    </update>
+<!--    删除一条聊天记录-->
+    <delete id="deleteChatting">
+        delete from user_chatting where chatting_id = #{chattingId}
+    </delete>
+<!--    删除多条聊天记录-->
+    <delete id="deleteChattingList">
+        delete from user_chatting where chatting_id in
+        <trim prefix="(" suffix=")">
+            <foreach collection="chattingIdList" separator="," item="chattingId">
+                #{chattingId}
+            </foreach>
+        </trim>
+    </delete>
+</mapper>

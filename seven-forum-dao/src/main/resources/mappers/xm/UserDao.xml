@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.xm.UserDao">
+
+    <!--查询手机号是否被注册-->
+    <select id="userPhoneIsRegiste" resultType="int">
+        select COUNT(*)
+        from nf_user
+        where user_phone = #{userPhone}
+    </select>
+    <!--添加用户-->
+    <insert id="addUser">
+        insert into nf_user(user_phone,user_name, user_img_url, user_pwd, user_logon_time)
+        values(#{userPhone},#{userName},#{userImgUrl},#{userPwd},#{userLogonTime})
+    </insert>
+    <!--根据手机和密码查询用户id(判断是否登陆成功-->
+    <select id="isLoginSuccess" resultType="int">
+        select user_id
+        from nf_user
+        where user_phone=#{param1} and user_pwd=#{param2}
+    </select>
+
+    <!--根据userId查询用户基本信息-->
+    <select id="getUserBaseInfoByUserId" resultMap="userBaseInfoResultMap">
+        select *
+        from nf_user A inner join nf_user_grade B on A.grade_id = B.grade_id
+                       inner join nf_user_vip C on A.vip_id = C.vip_id
+                       inner join nf_admin D on A.admin_id = D.admin_id
+        where A.user_id = #{userId}
+    </select>
+    <!--用户基本信息结果映射-->
+    <resultMap id="userBaseInfoResultMap" type="com.seven.forum.entity.xm.User"><!--resultMap中id,result,association是有顺序的，否则启动报错-->
+        <!--基本信息-->
+        <result property="userId" column="user_id"/>
+        <result property="userPhone" column="user_phone"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userName" column="user_name"/>
+        <result property="userImgUrl" column="user_img_url"/>
+        <result property="userPwd" column="user_pwd"/>
+        <result property="status" column="status"/>
+        <result property="gradeId" column="grade_id"/>
+        <result property="vipId" column="vip_id"/>
+        <result property="adminId" column="admin_id"/>
+        <result property="userLogonTime" column="user_logon_time"/>
+        <result property="userCoin" column="user_coin"/>
+        <result property="userExp" column="user_exp"/>
+        <!--等级表-->
+        <association property="userGrade">
+            <result property="gradeId" column="grade_id"/>
+            <result property="gradeNumber" column="grade_number"/>
+            <result property="groupId" column="grade_group_id"/>
+            <result property="nextGradeExp" column="next_grade_exp"/>
+        </association>
+        <!--会员表-->
+        <association property="userVip">
+            <result property="vipId" column="vip_id"/>
+            <result property="vipGroupId" column="vip_group_id"/>
+            <result property="vipLogonTime" column="vip_logon_time"/>
+        </association>
+        <!--管理员表-->
+        <association property="admin">
+            <result property="adminId" column="admin_id"/>
+            <result property="adminGroupId" column="admin_group_id"/>
+            <result property="userId" column="user_id"/>
+            <result property="adminLogonTime" column="admin_logon_time"/>
+        </association>
+
+    </resultMap>
+
+
+
+
+</mapper>

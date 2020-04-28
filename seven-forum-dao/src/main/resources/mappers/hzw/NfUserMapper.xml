@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seven.forum.dao.hzw.NfUserDao">
+
+
+    <resultMap id="nfUser" type="com.seven.forum.entity.hzw.NfUserEntity">
+        <id property="userId" column="user_id"></id>
+        <result property="userPhone" column="user_phone"></result>
+        <result property="userEmail" column="user_email"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="userImgUrl" column="user_img_url"></result>
+        <result property="userPwd" column="user_pwd"></result>
+        <result property="status" column="status"></result>
+        <result property="adminId" column="admin_id"></result>
+        <result property="gradeId" column="grade_id"></result>
+        <result property="vipId" column="vip_id"></result>
+        <result property="userLogonTime" column="user_logon_time"></result>
+        <result property="userCoin" column="user_coin"></result>
+        <result property="userExp" column="user_exp"></result>
+    </resultMap>
+
+<!--    查询指定用户信息-->
+    <select id="getUserByUserId" resultType="com.seven.forum.entity.hzw.NfUserEntity">
+        select user_id, user_name, status, admin_id, grade_id, vip_id, user_logon_time, user_coin, user_exp from nf_user
+        where user_id = #{userId}
+    </select>
+<!--    查询指定用户的简单信息-->
+    <select id="getUserEasyByUserId" resultType="com.seven.forum.entity.hzw.NfUserEasyEntity">
+        select user_id, user_name, user_img_url, admin_id, grade_id, vip_id from nf_user
+        where user_id = #{userId}
+    </select>
+<!--    查询管理员信息-->
+    <select id="getNfAdminByAdminId" resultType="com.seven.forum.entity.hzw.NfAdminEntity">
+        select admin_id, admin_type, admin_group_id, user_id, admin_logon_time from nf_admin;
+        where admin_id = #{adminId}
+    </select>
+<!--    查询会员信息-->
+    <select id="getUserVipByVipId" resultType="com.seven.forum.entity.hzw.NfUserVipEntity">
+        select vip_id, vip_type, vip_group_id, vip_logon_time from nf_user_vip
+        where vip_id = #{vipId}
+    </select>
+<!--    查询等级信息-->
+    <select id="getUserGradeByGradeId" resultType="com.seven.forum.entity.hzw.NfUserGradeEntity">
+        select grade_id, grade_type, grade_group_id, title, next_grade_exp from nf_user_grade
+        where grade_id = #{gradeId}
+    </select>
+
+
+<!--    添加用户-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into nf_user(user_phone, user_email, user_name, user_img_url, user_pwd, status, admin_id, grade_id, vip_id, user_logon_time, user_coin, user_exp)
+        values (#{nfUser.userPhone},#{nfUser.userEmail},#{nfUser.userName},#{nfUser.userImgUrl},#{nfUser.userPwd},#{nfUser.status},#{nfUser.adminId},#{nfUser.gradeId},#{nfUser.vipId},#{nfUser.userLogonTime},#{nfUser.userCoin},#{nfUser.userExp})
+    </insert>
+
+
+</mapper>
