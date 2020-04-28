@@ -32,7 +32,5 @@ public class SpringBootApp {
 //        NfMessageService service1 = run.getBean(NfMessageService.class);
 //        ChattingService service2 = run.getBean(ChattingService.class);
 
-
-
     }
 }

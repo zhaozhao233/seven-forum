@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="" uuid="a4a97d2a-7d67-4b2c-a3fd-34e38256e531">
+    <data-source source="LOCAL" name="表的创建" uuid="a461293b-3898-473e-8a47-e9ad9441cf18">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
@@ -13,32 +13,7 @@
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
-        <property name="serverTimezone" value="UTC" />
       </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="seven_forum" uuid="f75c8fa9-1a1d-4a54-bd9d-d5a50612a880">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="serven" uuid="30c10678-075f-464c-ab62-b2a35f48b201">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="seven_forum1" uuid="264ee417-40fe-45a0-a42a-7b0792264343">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="seven_forum@localhost" uuid="2551bcf0-02ca-4fde-ba83-7169f61ec8ef">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/seven_forum</jdbc-url>
     </data-source>
   </component>
 </project>
