@@ -64,7 +64,6 @@ $RECYCLE.BIN/
 *.lnk
 
 
-.gitignore
 .idea/.gitignore
 .idea/codeStyles/
 .idea/compiler.xml
@@ -74,6 +73,5 @@ $RECYCLE.BIN/
 .idea/uiDesigner.xml
 .idea/vcs.xml
 logs/
-pom.xml
 seven-forum.iml
 /seven-forum-util/src/main/java/com/seven/forum/util/SendSmsUtil.java
