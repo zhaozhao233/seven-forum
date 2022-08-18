@@ -95,12 +95,12 @@ where  u.user_id = #{userId} or u.user_id
         /*取消评论点赞*/
         update like_log set like_status = 0 where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type = 1;
     </update>
-    
+
     <select id="checkDynamicLike" resultType="integer">
         /*康康动态有没有点赞*/
         select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=0;
     </select>
-    
+
     <select id="checkCommentLike" resultType="integer">
         /*康康评论有没有点赞*/
         select like_status from like_log where like_obj_id = #{likeObjId} and user_id = #{userId} and like_type=1;
@@ -115,7 +115,6 @@ where  u.user_id = #{userId} or u.user_id
         /*评论 取消点赞后又点赞*/
         update like_log set like_status = 1 where like_obj_id = #{likeObjId} and user_id =#{userId} and like_type = 1;
     </update>
-
-
-
 </mapper>
+
+

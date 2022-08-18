@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seven-forum-controller" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seven-forum-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/SpringBootApp.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seven-forum-controller/src/main/java/com/seven/forum/controller/lhj/UserDynamicController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seven-forum-controller/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seven-forum-dao" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/seven-forum-dao/src/main/java" charset="UTF-8" />

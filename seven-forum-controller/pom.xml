@@ -28,11 +28,16 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.17</version>
+            <version>1.1.10</version>
         </dependency>
+
+
+
+
 
 
 
@@ -43,6 +48,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.4.RELEASE</version>
             </plugin>
         </plugins>
     </build>

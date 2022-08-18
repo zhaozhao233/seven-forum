@@ -8,6 +8,14 @@
     <artifactId>seven-forum</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-easysdk -->
+    <dependencies>
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>4.9.124.ALL</version>
+        </dependency>
+    </dependencies>
     <modules>
         <module>seven-forum-entity</module>
         <module>seven-forum-service</module>
@@ -15,6 +23,8 @@
         <module>seven-forum-controller</module>
         <module>seven-forum-util</module>
     </modules>
+
+
 
     <parent>
         <groupId>org.springframework.boot</groupId>

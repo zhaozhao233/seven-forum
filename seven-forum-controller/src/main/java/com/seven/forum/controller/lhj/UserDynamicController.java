@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.function.IntConsumer;
 
 @Controller
 @RequestMapping("/dynamic")
@@ -30,14 +31,13 @@ public class UserDynamicController {
 
     private static final String FILE_DIRECTORY = "D:\\A-learn\\A-TeamProject\\seven-forum\\seven-forum-controller\\src\\main\\resources\\static\\image";
 
-
     @Autowired
     private UserDynamicService dynamicService;
 
-    //æ˜¾ç¤ºæˆ‘andå…³æ³¨çš„äººå‘çš„åŠ¨æ€
+    //ÏÔÊ¾ÎÒand¹Ø×¢µÄÈË·¢µÄ¶¯Ì¬
     @RequestMapping("/followUserDynamic")
     @ResponseBody
-    public ResponseVO listDynamic(@RequestParam(defaultValue = "1") Integer pageNum,@RequestParam(defaultValue = "4")Integer pageSize,Integer userId){
+    public ResponseVO listDynamic(@RequestParam(defaultValue = "1") Integer pageNum,Integer pageSize,Integer userId){
         List<UserDynamicEntity> userDynamicEntities = dynamicService.listFollowUserDynamic(pageNum, pageSize, userId);
         PageInfo<UserDynamicEntity> pageInfo = new PageInfo<>(userDynamicEntities,3);
         return  new ResponseVO(200,"ok",pageInfo);
@@ -45,23 +45,22 @@ public class UserDynamicController {
     @RequestMapping("/listHotDynamic")
     @ResponseBody
     public ResponseVO listHotDynamic(){
-
         List<UserDynamicEntity> hotDynamic = dynamicService.listHotDynamic();
         return new ResponseVO(200,"ok",hotDynamic);
     }
 
     @RequestMapping("/listComment")
     @ResponseBody
-    //æ˜¾ç¤ºè¯¥åŠ¨æ€ä¸‹çš„æ‰€æœ‰è¯„è®º
+    //ÏÔÊ¾¸Ã¶¯Ì¬ÏÂµÄËùÓĞÆÀÂÛ
     public ResponseVO listComment(Integer pageNum,@RequestParam(defaultValue = "4") Integer pageSize,Integer dynamicId){
         List<UserCommentEntity> userCommentEntities = dynamicService.listCommentByDynamicId(pageNum,pageSize,dynamicId);
         PageInfo<UserCommentEntity> pageInfo = new PageInfo<>(userCommentEntities,3);
-        return  new ResponseVO(200,"ok",pageInfo);
+        return new ResponseVO(200,"ok",pageInfo);
     }
 
     @RequestMapping("/commentDynamic")
     @ResponseBody
-    //è¯„è®ºåŠ¨æ€
+    //ÆÀÂÛ¶¯Ì¬
     public String commentDynamic(Integer userId, Integer dynamicId, String commentContent,@RequestParam(defaultValue = "1") Integer commentStatus){
         dynamicService.commentDynamicWithAddCommentCount(userId,dynamicId,commentContent,commentStatus);
         return "comment done";
@@ -69,7 +68,7 @@ public class UserDynamicController {
 
     @RequestMapping("/replyComment")
     @ResponseBody
-    //å›å¤è¯„è®º
+    //»Ø¸´ÆÀÂÛ
     public String replyComment(Integer userId,Integer dynamicId,String commentContent,Integer replyUserId,@RequestParam(defaultValue = "1")Integer commentStatus){
        dynamicService.replyUserWithAddCommentCount(userId,dynamicId,commentContent,replyUserId,commentStatus);
         return "reply done";
@@ -78,7 +77,7 @@ public class UserDynamicController {
     @PostMapping("/releaseDynamic")
     @ResponseBody
     @CrossOrigin
-    //å‘å¸ƒåŠ¨æ€
+    //·¢²¼¶¯Ì¬
     public String releaseDynamic(@RequestParam(value = "userId") Integer userId, String dynamicContent, MultipartFile[] myFiles){
         String filename;
         String newFilename;
@@ -104,19 +103,19 @@ public class UserDynamicController {
 
     @RequestMapping("/likeDynamic")
     @ResponseBody
-    //åŠ¨æ€ç‚¹èµ
+    //¶¯Ì¬µãÔŞ
     public String likeDynamic(Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer dynamicId){
         Integer status = dynamicService.checkDynamicLike(likeObjId, userId);
         if (status==null){
             dynamicService.likeDynamicAndAddLikeCount(likeObjId,userId,likeStatus,dynamicId);
             return "insert done";
         }else {
-            //å–æ¶ˆç‚¹èµ
+            //È¡ÏûµãÔŞ
             if (status==1){
                 dynamicService.cancelDynamicLikeAndReduceLikeCount(likeObjId,userId,dynamicId);
                 return "cancel";
             }
-            //å–æ¶ˆç‚¹èµååˆç‚¹èµ
+            //È¡ÏûµãÔŞºóÓÖµãÔŞ
             if (status==0){
                 dynamicService.dynamicLikeAgainAfterCancelLikeAndAddLikeCount(likeObjId,userId,dynamicId);
                 return "after cancel";
@@ -128,26 +127,34 @@ public class UserDynamicController {
 
     @RequestMapping("/likeComment")
     @ResponseBody
-    //è¯„è®ºç‚¹èµ
+    //ÆÀÂÛµãÔŞ
     public String likeComment(Integer likeObjId, Integer userId, @RequestParam(defaultValue = "1") Integer likeStatus, Integer commentId){
         Integer status = dynamicService.checkCommentLike(likeObjId, userId);
         if (status==null){
-            //ç‚¹èµ
+            //µãÔŞ
             dynamicService.likeCommentAndAddLikeCount(likeObjId,userId,likeStatus,commentId);
             return "insert done";
         }else {
-            //å–æ¶ˆç‚¹èµ
+            //È¡ÏûµãÔŞ
             if (status==1){
                 dynamicService.cancelCommentLikeAndReduceLikeCount(likeObjId,userId,commentId);
                 return "cancel";
             }
-            //å–æ¶ˆååˆç‚¹èµ
+            //È¡ÏûºóÓÖµãÔŞ
             if (status==0){
                 dynamicService.commentLikeAgainAfterCancelLikeAndAddLikeCommentCount(likeObjId,userId,commentId);
                 return "after cancel";
             }
         }
         return "like comment done";
+    }
+
+    public static void main(String[] args) {
+        System.out.println(as(88));
+
+    }
+    public  static  char as(int grade){
+        return  grade >= 90 ? 'A' : grade <=89 && grade >=60 ? 'B' : 'C';
     }
 
 

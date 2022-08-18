@@ -1,8 +1,8 @@
 package com.seven.forum.dao.lhj;
-
 import com.seven.forum.entity.lhj.UserCommentEntity;
 import com.seven.forum.entity.lhj.UserDynamicEntity;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

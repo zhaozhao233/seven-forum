@@ -12,7 +12,7 @@
         </layout>
     </appender>
 
-    <appender name="RollingFile"
+    <appender name="Rollin  gFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS}/spring-boot-logger.log</file>
         <encoder
